@@ -3,7 +3,7 @@ import React from 'react';
 const Navbar = () => (
   <nav className="w-full bg-blue-300 border-b-4 border-black  px-14 py-2 flex items-center justify-between mb-8">
     <span className="text-2xl font-extrabold text-black tracking-tight select-none">
-      LinkIT
+      ⁂ LinkIT
     </span>
     <a
       href="https://github.com/" // Change to your repo or about page

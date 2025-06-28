@@ -1,11 +1,13 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 
 const UrlForm = () => {
-  const [url, setUrl] = useState('');
+  const [url, setUrl] = useState('https://www.google.com');
+  const [shortUrl, setShortUrl] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle URL shortening logic here
+  const handleSubmit = async () => {
+    const { data } = await axios.post('http://localhost:3000/api/create', { url });
+    setShortUrl(data);
   };
 
   return (
@@ -13,7 +15,7 @@ const UrlForm = () => {
       <h1 className="text-3xl font-extrabold text-black text-center mb-6">
         URL Shortener
       </h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4">
         <input
           type="url"
           className="px-4 py-2 rounded-xl border-4 border-black bg-white text-black font-mono  shadow-[4px_4px_0_0_#000] focus:outline-none focus:ring-0"
@@ -23,12 +25,14 @@ const UrlForm = () => {
           required
         />
         <button
+          onClick={handleSubmit}
           type="submit"
-          className="bg-blue-400 border-4 border-black text-black font-bold py-2 rounded-xl shadow-[4px_4px_0_0_#000] hover:bg-pink-300 hover:translate-x-1 hover:translate-y-1 transition-all hover:cursor-pointer hover:shadow"
+          className="bg-blue-400 border-4 border-black text-black font-bold py-2 rounded-xl shadow-[4px_4px_0_0_#000] hover:bg-pink-300 active:translate-x-1 active:translate-y-1 transition-all hover:cursor-pointer active:shadow"
         >
           Shorten URL
         </button>
-      </form>
+        {shortUrl && <p>{shortUrl}</p>}
+      </div>
     </div>
   );
 };
