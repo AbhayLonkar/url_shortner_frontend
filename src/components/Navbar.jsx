@@ -1,20 +1,45 @@
 import React from 'react';
+import { Link } from '@tanstack/react-router';
 
 const Navbar = () => (
-  <nav className="w-full bg-blue-300 border-b-4 border-black  px-14 py-2 flex items-center justify-between mb-8">
+  <nav className="w-full bg-blue-300 border-b-4 border-black px-14 py-2 flex items-center justify-between mb-8">
+    {/* Left: Brand Name */}
     <span className="text-2xl font-extrabold text-black tracking-tight select-none">
       ⁂ LinkIT
     </span>
-    <a
-      href="https://github.com/" // Change to your repo or about page
-      target="_blank"
-      rel="noopener noreferrer"
-      className="bg-pink-400 border-2 border-black  shadow-[2px_2px_0_0_#000] rounded-md px-4 py-2 font-bold text-black  hover:bg-pink-300 transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow"
-    >
-      GitHub
-    </a>
+    {/* Center: Main Links */}
+    <div className="flex-1 flex justify-center gap-4">
+      <Link
+        to="/"
+        className="px-4 py-2 font-bold border-2 border-black rounded-md bg-white text-black shadow-[2px_2px_0_0_#000] hover:bg-blue-200 transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow"
+      >
+        Home
+      </Link>
+      <Link
+        to="/dashboard"
+        className="px-4 py-2 font-bold border-2 border-black rounded-md bg-white text-black shadow-[2px_2px_0_0_#000] hover:bg-blue-200 transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow"
+      >
+        Dashboard
+      </Link>
+    </div>
+    {/* Right: Auth Links & GitHub */}
+    <div className="flex gap-2 items-center">
+      <Link
+        to="/auth?mode=login"
+        className="px-4 py-2 font-bold border-2 border-black rounded-md bg-white text-black shadow-[2px_2px_0_0_#000] hover:bg-pink-200 transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow"
+      >
+        Login
+      </Link>
+      <a
+        href="https://github.com/" // Change to your repo or about page
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-pink-400 border-2 border-black shadow-[2px_2px_0_0_#000] rounded-md px-4 py-2 font-bold text-black hover:bg-pink-300 transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow"
+      >
+        GitHub
+      </a>
+    </div>
   </nav>
-  // shadow-[2px_2px_0_0_#000]
 );
 
 export default Navbar;

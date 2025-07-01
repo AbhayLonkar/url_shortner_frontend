@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { loginUser } from '../api/user.api';
+import { useSelector } from 'react-redux';
 
 const LoginForm = ({ setLogin }) => {
   const [email, setEmail] = useState('abhaylonkar9@gmail.com');
@@ -7,14 +8,16 @@ const LoginForm = ({ setLogin }) => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
+  const auth = useSelector((state) => state.auth);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     const data = await loginUser(email, password);
+    console.log(data);
     setLoading(false);
     // setEmail('');
     // setPassword('');
-    console.log(data);
   };
 
   return (
