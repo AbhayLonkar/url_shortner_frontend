@@ -2,7 +2,8 @@ import axios from "axios";
 
 const axiosInstance = axios.create({
   baseURL: "http://localhost:3000",
-  timeout: 10000 // 10sec
+  timeout: 10000, // 10sec
+  withCredentials: true, // Allow cookies to be sent with requests
 });
 
 // Error handler interceptor
