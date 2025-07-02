@@ -1,17 +1,31 @@
+import { useNavigate } from '@tanstack/react-router';
 import React, { useState } from 'react';
+import { registerUser } from '../api/user.api';
+import { useDispatch } from 'react-redux';
+import { login } from '../../store/slice/authSlice';
 
-const RegisterForm = ({ onSubmit, setLogin }) => {
+const RegisterForm = ({ setLogin }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    if (onSubmit) await onSubmit({ username, email, password });
-    setLoading(false);
+    try {
+      setLoading(true);
+      const data = await registerUser(username, email, password);
+      console.log(data);
+      dispatch(login(data.user));
+      navigate({ to: '/dashboard' });
+      setLoading(false);
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
+    }
   };
 
   return (

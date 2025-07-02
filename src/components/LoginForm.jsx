@@ -1,23 +1,29 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from "@tanstack/react-router"
+
 import { loginUser } from '../api/user.api';
-import { useSelector } from 'react-redux';
+import { login } from '../../store/slice/authSlice.js';
 
 const LoginForm = ({ setLogin }) => {
-  const [email, setEmail] = useState('abhaylonkar9@gmail.com');
-  const [password, setPassword] = useState('Abhay@123');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
-  const auth = useSelector((state) => state.auth);
+  // const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     const data = await loginUser(email, password);
-    console.log(data);
+    dispatch(login(data.user))
+    navigate({ to: '/dashboard' });
     setLoading(false);
-    // setEmail('');
-    // setPassword('');
+    setEmail('');
+    setPassword('');
   };
 
   return (

@@ -22,13 +22,7 @@ const authSlice = createSlice({
 });
 
 export const {
-  loginStart,
-  loginSuccess,
-  loginFailure,
-  logout,
-  registerStart,
-  registerSuccess,
-  registerFailure,
+  login, logout
 } = authSlice.actions;
 
 export default authSlice.reducer;
