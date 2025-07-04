@@ -22,3 +22,8 @@ export const getUrls = async () => {
   const { data } = await axiosInstance.get('http://localhost:3000/api/user/urls');
   return data;
 }
+
+export const deleteUrl = async (id) => {
+  const { data } = await axiosInstance.delete(`http://localhost:3000/api/user/delete/${id}`);
+  return data;
+}

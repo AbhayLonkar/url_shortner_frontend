@@ -1,14 +1,22 @@
 import React from 'react'
-import { useQuery } from "@tanstack/react-query"
-import { getUrls } from '../api/user.api'
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
+import { getUrls, deleteUrl } from '../api/user.api'
 import CustomUrlForm from '../components/CustomUrlForm';
 
 const DashBoard = () => {
+  const queryClient = useQueryClient();
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ['userUrls'],
     queryFn: getUrls,
     refetchInterval: 30000,
     staleTime: 0,
+  });
+
+  const deleteMutation = useMutation({
+    mutationFn: deleteUrl,
+    onSuccess: () => {
+      queryClient.invalidateQueries(['userUrls']);
+    },
   });
 
   return (
@@ -45,6 +53,13 @@ const DashBoard = () => {
                   >
                     Visit
                   </a>
+                  <button
+                    className="bg-red-400 border-2 border-black rounded-lg px-3 py-1 font-bold text-black shadow-[2px_2px_0_0_#000] hover:bg-red-300 transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow"
+                    onClick={() => deleteMutation.mutate(item.shortUrl)}
+                    disabled={deleteMutation.isLoading}
+                  >
+                    {deleteMutation.isLoading ? 'Deleting...' : 'Delete'}
+                  </button>
                 </div>
               </div>
             ))}
