@@ -17,3 +17,8 @@ export const getCurrentUser = async () => {
   const { data } = await axiosInstance.get('http://localhost:3000/api/auth/me');
   return data;
 }
+
+export const getUrls = async () => {
+  const { data } = await axiosInstance.get('http://localhost:3000/api/user/urls');
+  return data;
+}
