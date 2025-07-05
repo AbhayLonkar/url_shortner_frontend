@@ -1,1 +1,63 @@
 @import "tailwindcss";
+
+@theme {
+    /* Platinum */
+    --color-platinum: #cfdbd5;
+    --color-platinum-100: #25312b;
+    --color-platinum-200: #4a6256;
+    --color-platinum-300: #6f9281;
+    --color-platinum-400: #a0b7ab;
+    --color-platinum-500: #cfdbd5;
+    --color-platinum-600: #dae3de;
+    --color-platinum-700: #e3eae7;
+    --color-platinum-800: #ecf1ef;
+    --color-platinum-900: #f6f8f7;
+
+    /* Alabaster */
+    --color-alabaster: #e8eddf;
+    --color-alabaster-100: #323b21;
+    --color-alabaster-200: #647642;
+    --color-alabaster-300: #94ab69;
+    --color-alabaster-400: #becca4;
+    --color-alabaster-500: #e8eddf;
+    --color-alabaster-600: #ecf0e5;
+    --color-alabaster-700: #f1f4eb;
+    --color-alabaster-800: #f6f8f2;
+    --color-alabaster-900: #fafbf8;
+
+    /* Saffron */
+    --color-saffron: #f5cb5c;
+    --color-saffron-100: #3f2f04;
+    --color-saffron-200: #7f5f08;
+    --color-saffron-300: #be8e0c;
+    --color-saffron-400: #f1b81d;
+    --color-saffron-500: #f5cb5c;
+    --color-saffron-600: #f7d67d;
+    --color-saffron-700: #f9e09d;
+    --color-saffron-800: #fbebbe;
+    --color-saffron-900: #fdf5de;
+
+    /* Eerie Black */
+    --color-eerie-black: #242423;
+    --color-eerie-black-100: #070707;
+    --color-eerie-black-200: #0e0e0e;
+    --color-eerie-black-300: #161615;
+    --color-eerie-black-400: #1d1d1c;
+    --color-eerie-black-500: #242423;
+    --color-eerie-black-600: #50504f;
+    --color-eerie-black-700: #7d7d7a;
+    --color-eerie-black-800: #a8a8a6;
+    --color-eerie-black-900: #d4d4d3;
+
+    /* Jet */
+    --color-jet: #333533;
+    --color-jet-100: #0a0a0a;
+    --color-jet-200: #141514;
+    --color-jet-300: #1e1f1e;
+    --color-jet-400: #282a28;
+    --color-jet-500: #333533;
+    --color-jet-600: #5a5e5a;
+    --color-jet-700: #828782;
+    --color-jet-800: #acafac;
+    --color-jet-900: #d5d7d5;
+}
