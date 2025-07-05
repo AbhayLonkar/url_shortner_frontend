@@ -9,7 +9,7 @@ const Navbar = () => {
 
     return (
         <nav
-            className="w-full bg-saffron border-b-4 border-black px-14 py-2 flex items-center justify-between mb-8">
+            className="w-full bg-saffron border-b-4 border-black px-14 py-2 flex items-center justify-between ">
             {/* Left: Brand Name */}
             <span className="text-2xl font-extrabold text-black tracking-tight select-none">
       ⁂ LinkIT

@@ -2,16 +2,18 @@ import React from 'react'
 
 const HomePage = () => {
     return (
-        <div className={'t'}>
-            <section id={'home'} className={'flex flex-wrap justify-center items-center md:flex-row flex-col gap-5'}>
-                <div className={'flex justify-center items-center flex-col gap-2 md:w-lg w-[90%] h-100 p-3'}>
+        <div className={'h-full w-full'}>
+            <section id={'home'}
+                     className={'bg-saffron-800 h-[91vh] flex flex-wrap justify-center items-center md:flex-row flex-col md:gap-5 gap-1'}>
+                <div
+                    className={'flex justify-center items-center flex-col gap-2 md:w-lg max-w-lg w-[90%] h-100 p-3'}>
                     <span
                         className={'self-start text-red-700 font-semibold bg-red-200 rounded-full px-3 py-2 text-center text-xs shadow-[3px_3px_0_0_#000]'}>Easy link shortening</span>
                     <h1 className={'font-bold text-eerie-black text-4xl mt-2'}>
                         LinkIT short URL & QR code generator
                     </h1>
                     <p className={'my-3 text-jet-300 font-medium'}>
-                        A short link allows you to collect so much data about syour consumers & their behaviours.
+                        A short link allows you to collect so much data about your consumers & their behaviours.
                     </p>
                     <div className={'flex justify-center items-center w-full relative'}>
                         <input type={'url'} placeholder={'Paste a link to shorten it'}
@@ -30,9 +32,14 @@ const HomePage = () => {
                     {/*</div>*/}
                 </div>
 
-                <div className={'flex justify-center items-center flex-col gap-2 bg-yellow-300  md:w-lg  h-100 p-3'}>
-                    <img src={''} alt={'Linkit'}/>
+                <div
+                    className={'flex md:justify-center items-center flex-col gap-2  md:w-lg max-w-lg w-[95%] h-100 p-3'}>
+                    <img src={'/images/home-section.png'} alt={'Linkit'} className={'h-full'}/>
                 </div>
+            </section>
+
+            <section id={'about'} className={'bg-white w-full relative'}>
+                section 2
             </section>
         </div>
     )
