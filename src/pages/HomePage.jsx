@@ -30,12 +30,12 @@ const HomePage = () => {
                                 className={'absolute border right-3 py-2.5 w-25 rounded-lg bg-saffron text-eerie-black font-bold shadow-[3px_3px_0_0_#000] cursor-pointer transition-all active:translate-y-1 active:translate-x-1 active:shadow'}>Shorten
                             </button>
                         </div>
-                        {/* For Generated URL */}
-                        {/*<div className={'flex justify-center items-center w-full relative'}>*/}
+                        {/*For Generated URL*/}
+                        {/*<div className={'flex justify-center items-center w-full relative md:flex-row flex-col gap-2'}>*/}
                         {/*    <input type={'url'} value={'http://localhost:3000/Sdbla2'}*/}
                         {/*           className={'p-3 py-4 bg-white rounded-lg w-full shadow-[4px_4px_0_0_#000] outline-0'}/>*/}
                         {/*    <button*/}
-                        {/*        className={'absolute border right-3 py-2.5 w-25 rounded-lg bg-blue-300 text-eerie-black font-bold shadow-[3px_3px_0_0_#000] cursor-pointer transition-all active:translate-y-1 active:translate-x-1 active:shadow'}>Copy*/}
+                        {/*        className={'md:absolute border right-3 py-2.5 md:w-25 w-full rounded-lg bg-blue-300 text-eerie-black font-bold shadow-[3px_3px_0_0_#000] cursor-pointer transition-all active:translate-y-1 active:translate-x-1 active:shadow'}>Copy*/}
                         {/*    </button>*/}
                         {/*</div>*/}
                     </div>
@@ -138,14 +138,14 @@ const HomePage = () => {
                         </p>
                         <div className={'flex flex-col gap-1 '}>
                             <span
-                                className={'flex justify-around w-44 items-center p-0.5 h-8 border rounded-lg shadow-[2px_2px_0_#000]  bg-saffron-600'}>
+                                className={'flex justify-around min-w-50 items-center p-0.5 h-8 border rounded-lg shadow-[2px_2px_0_#000]  bg-saffron-600'}>
                                 <FaLink size={20}/>  Link Management
                             </span>
                             <span
-                                className={'flex justify-around w-44 h-8 items-center p-0.5 border rounded-lg shadow-[2px_2px_0_#000] bg-saffron-600'}>
+                                className={'flex justify-around min-w-50 h-8 items-center p-0.5 border rounded-lg shadow-[2px_2px_0_#000] bg-saffron-600'}>
                                 <MdOutlinePrivacyTip size={20}/>  Privacy Control
                             </span> <span
-                            className={'flex justify-around w-44 h-8 items-center p-0.5 border rounded-lg shadow-[2px_2px_0_#000] bg-saffron-600'}>
+                            className={'flex justify-around min-w-50 h-8 items-center p-0.5 border rounded-lg shadow-[2px_2px_0_#000] bg-saffron-600'}>
                                 <MdOutlineDashboardCustomize size={20}/>  Powerful Dashboard
                             </span>
                         </div>
