@@ -2,6 +2,7 @@ import React from 'react'
 import {HiOutlineClipboardDocumentList} from "react-icons/hi2";
 import {MdAdsClick} from "react-icons/md";
 import {IoMdHappy} from "react-icons/io";
+import Card from "../components/Card.jsx";
 
 const HomePage = () => {
     return (
@@ -43,9 +44,9 @@ const HomePage = () => {
                 </div>
             </section>
 
-            <section id={'about'} className={'bg-white w-full relative h-[90vh] flex justify-center'}>
+            <section id={'about'} className={'bg-white w-full relative h-[90vh] flex items-center flex-col'}>
                 <div
-                    className={'bg-white flex justify-around items-center md:flex-row flex-col border p-2 py-4 rounded-lg shadow-[4px_4px_0_#000] h-min  md:max-w-4xl w-[80%]'}>
+                    className={'bg-white -mt-14 flex justify-around items-center md:flex-row flex-col border p-2 py-4 rounded-lg shadow-[4px_4px_0_#000] h-min  md:max-w-4xl w-[80%]'}>
                     <p className={'text-eerie-black text-3xl font-bold text-center md:w-1/3 md:min-w-72 '}>
                         We have a great achievement to show
                     </p>
@@ -73,10 +74,17 @@ const HomePage = () => {
                         </div>
                     </div>
                 </div>
-                <h2>One short link, infinite possibility</h2>
-                <p>A short link is powerful marketing tool when you use it carefully. It is not just a link but a medium
-                    between your customer and their destination.
+                <h2 className={'mt-16 text-4xl text-eerie-black font-bold text-center'}>One short link, infinite
+                    possibility</h2>
+                <p className={'font-semibold md:w-2xl text-center mt-5 text-eerie-black-700'}>
+                    A short link is powerful marketing tool when you use it carefully. It is not just a link but a
+                    medium between your customer and their destination.
                 </p>
+                <div className={'mt-10 flex p-3 justify-center items-center gap-2 flex-wrap '}>
+                    <Card/>
+                    <Card/>
+                    <Card/>
+                </div>
             </section>
         </div>
     )
