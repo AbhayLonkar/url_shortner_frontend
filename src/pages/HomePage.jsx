@@ -7,6 +7,8 @@ import Tag from "../components/Tag.jsx";
 import {AiFillThunderbolt} from "react-icons/ai";
 import {BsGraphUpArrow} from "react-icons/bs";
 import {FaLink, FaUserCircle} from "react-icons/fa";
+import IntegrationCard from "../components/IntegrationCard.jsx";
+import ContactSection from "../components/ContactSession.jsx";
 
 const HomePage = () => {
     return (
@@ -49,8 +51,7 @@ const HomePage = () => {
 
             <section id={'about'}
                      className={'bg-white w-full relative md:min-h-[90vh] flex items-center flex-col border-b-4'}>
-                <div
-                    className={'bg-white -mt-14 flex justify-around items-center md:flex-row flex-col border p-2 py-4 rounded-lg shadow-[4px_4px_0_#000] h-min  md:max-w-4xl w-[80%]'}>
+                <div className={'bg-white -mt-14 flex justify-around items-center md:flex-row flex-col border p-2 py-4 rounded-lg shadow-[4px_4px_0_#000] h-min  md:max-w-4xl w-[80%]'}>
                     <p className={'text-eerie-black text-3xl font-bold text-center md:w-1/3 md:min-w-72 '}>
                         We have a great achievement to show
                     </p>
@@ -138,14 +139,14 @@ const HomePage = () => {
                         </p>
                         <div className={'flex flex-col gap-1 '}>
                             <span
-                                className={'flex justify-around min-w-50 items-center p-0.5 h-8 border rounded-lg shadow-[2px_2px_0_#000]  bg-saffron-600'}>
+                                className={'flex justify-around w-44 items-center p-0.5 h-8 border rounded-lg shadow-[2px_2px_0_#000]  bg-saffron-600'}>
                                 <FaLink size={20}/>  Link Management
                             </span>
                             <span
-                                className={'flex justify-around min-w-50 h-8 items-center p-0.5 border rounded-lg shadow-[2px_2px_0_#000] bg-saffron-600'}>
+                                className={'flex justify-around w-44 items-center p-0.5 h-8 border rounded-lg shadow-[2px_2px_0_#000]  bg-saffron-600'}>
                                 <MdOutlinePrivacyTip size={20}/>  Privacy Control
                             </span> <span
-                            className={'flex justify-around min-w-50 h-8 items-center p-0.5 border rounded-lg shadow-[2px_2px_0_#000] bg-saffron-600'}>
+                            className={'flex justify-around w-44 items-center p-0.5 h-8 border rounded-lg shadow-[2px_2px_0_#000]  bg-saffron-600'}>
                                 <MdOutlineDashboardCustomize size={20}/>  Powerful Dashboard
                             </span>
                         </div>
@@ -157,6 +158,7 @@ const HomePage = () => {
                     </div>
                 </div>
             </section>
+
 
             <section id={'fifth'}
                      className={'bg-saffron-800 flex justify-center items-center py-10 md:min-h-[90vh] border-b-4'}>
@@ -173,12 +175,43 @@ const HomePage = () => {
                             and optimize your marketing strategy and increase engagement.
                         </p>
                         <button
-                            className={"mt-2 border-2 bg-saffron rounded-lg px-5 py-2 w-max flex justify-center items-center font-bold text-sm shadow-[2px_2px_0_#000] active:shadow active:translate-1 transition-all cursor-pointer"}>
+                            className={"my-2 border-2 bg-saffron rounded-lg px-5 py-2 w-max flex justify-center items-center font-bold text-sm shadow-[2px_2px_0_#000] active:shadow active:translate-1 transition-all cursor-pointer"}>
                             Get Started <MdKeyboardArrowRight size={20}/>
                         </button>
                     </div>
                 </div>
             </section>
+
+            <section className={'flex items-center flex-col  border-b-4'}>
+                <div className={'bg-white -mt-14 flex justify-around items-center flex-col border p-2 py-4 rounded-lg shadow-[4px_4px_0_#000] h-min  md:max-w-4xl w-[80%]'}>
+                    <p className={'text-eerie-black text-3xl font-bold text-center  md:min-w-72 '}>
+                        More features than asked for:
+                    </p>
+                    <div className={'flex  flex-wrap items-center justify-center gap-5 mt-5'}>
+                        <Card />
+                        <Card />
+                        <Card />
+                    </div>
+                </div>
+
+                <h1 className={'mt-14 text-3xl font-bold text-eerie-black text-center'}>Integration</h1>
+                <p className={'text-eerie-black-600 my-5 text-center'}>Connect with popular tools and boost your productivity</p>
+                <div className={'flex flex-wrap justify-center items-center  max-w-3xl p-10 gap-4'}>
+                    <IntegrationCard />
+                    <IntegrationCard />
+                    <IntegrationCard />
+                    <IntegrationCard />
+                    <IntegrationCard />
+                    <IntegrationCard />
+                    <IntegrationCard />
+                    <IntegrationCard />
+                    <IntegrationCard />
+                </div>
+            </section>
+
+        {/*    Create a section from where users can find developer socials or contact*/}
+            <ContactSection />
+
 
         </div>
     )
