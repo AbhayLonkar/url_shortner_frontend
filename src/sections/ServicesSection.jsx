@@ -52,14 +52,14 @@ const ServicesSection = () => {
                     </p>
                     <div className={'flex flex-col gap-1 '}>
                             <span
-                                className={'flex justify-around w-44 items-center p-0.5 h-8 border rounded-lg shadow-[2px_2px_0_#000]  bg-saffron-600'}>
+                                className={'flex justify-around w-48 items-center p-0.5 h-8 border rounded-lg shadow-[2px_2px_0_#000]  bg-saffron-600'}>
                                 <FaLink size={20}/>  Link Management
                             </span>
                         <span
-                            className={'flex justify-around w-44 items-center p-0.5 h-8 border rounded-lg shadow-[2px_2px_0_#000]  bg-saffron-600'}>
+                            className={'flex justify-around w-48 items-center p-0.5 h-8 border rounded-lg shadow-[2px_2px_0_#000]  bg-saffron-600'}>
                                 <MdOutlinePrivacyTip size={20}/>  Privacy Control
                             </span> <span
-                        className={'flex justify-around w-44 items-center p-0.5 h-8 border rounded-lg shadow-[2px_2px_0_#000]  bg-saffron-600'}>
+                        className={'flex justify-around w-48 items-center p-0.5 h-8 border rounded-lg shadow-[2px_2px_0_#000]  bg-saffron-600'}>
                                 <MdOutlineDashboardCustomize size={20}/>  Powerful Dashboard
                             </span>
                     </div>
