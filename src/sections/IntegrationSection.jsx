@@ -54,7 +54,7 @@ export const IntegrationSection = () => {
     ]
 
     return <>
-        <h1 className={'mt-14 text-3xl font-bold text-eerie-black text-center'}>Integration</h1>
+        <h1 className={'mt-14 text-5xl font-bold text-eerie-black text-center'}>Integration</h1>
         <p className={'text-eerie-black-600 my-5 text-center'}>Connect with popular tools and boost your productivity</p>
         <div className={'flex flex-wrap justify-center items-center  max-w-4xl p-10 gap-4'}>
             {integrations.map((item, index) => (

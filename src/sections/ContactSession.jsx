@@ -2,9 +2,8 @@ import React from 'react';
 import {
     FaGithub,
     FaLinkedin,
-    FaTwitter,
     FaEnvelope,
-    FaDiscord, FaUser
+    FaUser
 } from 'react-icons/fa';
 
 const ContactSection = () => {
@@ -12,7 +11,7 @@ const ContactSection = () => {
         <section className="py-16 bg-gray-50 border-b-4" id={'contact'}>
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
-                    <h2 className="text-4xl font-bold text-gray-800 mb-4">Let's Connect</h2>
+                    <h2 className="text-5xl font-bold text-gray-800 mb-4">Let's Connect</h2>
                     <p className="text-gray-600 max-w-2xl mx-auto">
                         Feel free to reach out for collaborations, questions, or just to say hello!
                     </p>

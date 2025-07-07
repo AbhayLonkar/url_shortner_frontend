@@ -39,12 +39,12 @@ const HomeSection = () => {
 
     return (
         <section id={'home'}
-                 className={'bg-saffron-800 md:h-[91vh] border-b-4'}>
+                 className={'bg-saffron-800 md:h-[91vh] min-h-[91vh] h-max border-b-4'}>
             <div className={'flex justify-center items-center md:flex-row flex-col h-full md:gap-5 gap-1 px-5'}>
                 <div
-                    className={'flex justify-center items-center flex-col gap-2 md:w-lg max-w-lg w-[90%] h-100 p-3'}>
+                    className={'flex justify-center items-center flex-col gap-2 md:w-lg max-w-lg w-[90%] md:h-100 p-3 mt-5'}>
                     <Tag text={'Easy link shortening'}/>
-                    <h1 className={'font-bold text-eerie-black text-4xl mt-2'}>
+                    <h1 className={'font-bold text-eerie-black text-5xl mt-2'}>
                         LinkIT short URL & QR code generator
                     </h1>
                     <p className={'my-3 text-jet-300 font-medium'}>
@@ -84,7 +84,7 @@ const HomeSection = () => {
 
                 <div
                     className={'flex md:justify-center items-center flex-col gap-2  md:w-lg max-w-lg w-[95%] h-100 p-3'}>
-                    <img src={'/images/home-section.png'} alt={'link-it'} className={'h-full'}/>
+                    <img src={'/images/home-section.png'} alt={'link-it'} className={'h-full object-cover'}/>
                 </div>
             </div>
         </section>

@@ -2,7 +2,6 @@ import React from 'react'
 import {HiOutlineClipboardDocumentList} from "react-icons/hi2";
 import {MdAdsClick} from "react-icons/md";
 import {IoMdHappy} from "react-icons/io";
-import Card from "../components/Card.jsx";
 import CardContainer from "../components/CardContainer.jsx";
 
 const AboutSection = () => {
@@ -37,7 +36,7 @@ const AboutSection = () => {
                     </div>
                 </div>
             </div>
-            <h2 className={'mt-16 text-4xl text-eerie-black font-bold text-center p-1'}>One short link, infinite
+            <h2 className={'mt-16 text-5xl text-eerie-black font-bold text-center p-1'}>One short link, infinite
                 possibility</h2>
             <p className={'font-semibold md:w-2xl text-center mt-5 text-eerie-black-700 p-1'}>
                 A short link is powerful marketing tool when you use it carefully. It is not just a link but a

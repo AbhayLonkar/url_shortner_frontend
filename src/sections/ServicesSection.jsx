@@ -11,11 +11,11 @@ const ServicesSection = () => {
             <div className={'flex justify-center items-center gap-2 md:flex-row flex-col  px-3'}>
                 <div
                     className={'flex md:justify-center items-center flex-col md:w-1/2 max-w-lg w-[95%] h-100 p-3'}>
-                    <img src={'/images/analytic.png'} alt={'link-it'} className={'h-full'}/>
+                    <img src={'/images/analytic.png'} alt={'link-it'} className={'h-full object-cover'}/>
                 </div>
                 <div className={'flex flex-col p-3 justify-center gap-2 md:w-1/3 w-[70%] '}>
                     <Tag text={'Sales & Marketing'}/>
-                    <h2 className={'text-eerie-black text-3xl font-bold'}>Perfect for Sales & Marketing </h2>
+                    <h2 className={'text-eerie-black text-5xl font-bold'}>Perfect for Sales & Marketing </h2>
                     <p className={'font-semibold  my-5 text-eerie-black-700 '}>
                         Understanding your users and customers will help you increase your conversion. Our system
                         allow you to track everything. Whether it is the amount of clicks,the country of the
@@ -44,7 +44,7 @@ const ServicesSection = () => {
                 <div
                     className={'flex flex-col p-3 justify-center gap-2 md:w-1/3 w-[70%] '}>
                     <Tag text={'Sales & Marketing'}/>
-                    <h2 className={'text-eerie-black text-3xl font-bold'}>Powerful tools that work </h2>
+                    <h2 className={'text-eerie-black text-5xl font-bold'}>Powerful tools that work </h2>
                     <p className={'font-semibold  my-5 text-eerie-black-700 '}>
                         Our product let you target your users to better understand their behavior and provide them a
                         better overall experience through smart re-targeting. We provide you many powerful tools to
@@ -67,7 +67,7 @@ const ServicesSection = () => {
 
                 <div
                     className={'flex md:justify-center items-center flex-col md:w-1/2 max-w-lg w-[95%] h-100 p-3'}>
-                    <img src={'/images/security.png'} alt={'link-it'} className={'h-auto'}/>
+                    <img src={'/images/security.png'} alt={'link-it'} className={'h-auto object-cover'}/>
                 </div>
             </div>
         </section>
@@ -76,11 +76,11 @@ const ServicesSection = () => {
             <div className={'flex justify-center items-center gap-2 md:flex-row flex-col  px-3'}>
                 <div
                     className={'flex md:justify-center items-center flex-col md:w-1/2 max-w-lg w-[95%] h-100 p-3'}>
-                    <img src={'/images/qr.png'} alt={'link-it'} className={'h-full'}/>
+                    <img src={'/images/qr.png'} alt={'link-it'} className={'h-full object-cover'}/>
                 </div>
                 <div className={'flex flex-col p-3 justify-center gap-2 md:w-1/3 w-[70%] '}>
                     <Tag text={'QR Codes'}/>
-                    <h2 className={'text-eerie-black text-3xl font-bold'}>QR Code</h2>
+                    <h2 className={'text-eerie-black text-5xl font-bold'}>QR Code</h2>
                     <p className={'font-semibold  my-5 text-eerie-black-700 '}>
                         Easy to use dynamic, customizable QR codes for your marketing campaigns. Analyze statistics
                         and optimize your marketing strategy and increase engagement.
