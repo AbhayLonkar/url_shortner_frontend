@@ -8,7 +8,7 @@ import {
 
 const ContactSection = () => {
     return (
-        <section className="py-16 bg-gray-50 border-b-4" id={'contact'}>
+        <section className="py-16 bg-gray-50" id={'contact'}>
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
                     <h2 className="text-5xl font-bold text-gray-800 mb-4">Let's Connect</h2>
