@@ -9,7 +9,7 @@ import {
 
 const ContactSection = () => {
     return (
-        <section className="py-16 bg-gray-50 border-b-4">
+        <section className="py-16 bg-gray-50 border-b-4" id={'contact'}>
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
                     <h2 className="text-4xl font-bold text-gray-800 mb-4">Let's Connect</h2>
@@ -20,10 +20,10 @@ const ContactSection = () => {
 
                 <div className="max-w-3xl mx-auto">
                     {/* Social Links Cards */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
                         {/* GitHub */}
                         <a
-                            href="https://github.com/yourusername"
+                            href="https://github.com/abhaylonkar"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center p-6 bg-white rounded-lg border shadow-[3px_3px_0_#000] active:translate-1 active:shadow     transition-shadow duration-300"
@@ -37,7 +37,7 @@ const ContactSection = () => {
 
                         {/* LinkedIn */}
                         <a
-                            href="https://linkedin.com/in/yourusername"
+                            href="https://linkedin.com/in/abhaylonkar"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center p-6 bg-white rounded-lg border shadow-[3px_3px_0_#000] active:translate-1 active:shadow transition-shadow duration-300"
@@ -51,7 +51,7 @@ const ContactSection = () => {
 
                         {/* Email */}
                         <a
-                            href="mailto:your.email@example.com"
+                            href="mailto:abhaylonkar9@gmail.com"
                             className="flex items-center p-6 bg-white rounded-lg border shadow-[3px_3px_0_#000] active:translate-1 active:shadow transition-shadow duration-300"
                         >
                             <FaEnvelope className="text-3xl text-red-500" />
