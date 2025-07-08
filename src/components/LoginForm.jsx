@@ -1,31 +1,40 @@
-import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
-import {useNavigate} from "@tanstack/react-router"
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from "@tanstack/react-router"
 
-import {loginUser} from '../api/user.api';
-import {login} from '../../store/slice/authSlice.js';
-import {FaRegEye, FaRegEyeSlash} from "react-icons/fa";
+import { loginUser } from '../api/user.api';
+import { login } from '../../store/slice/authSlice.js';
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import ErrorBox from './ErrorBox.jsx';
 
-const LoginForm = ({setLogin}) => {
+const LoginForm = ({ setLogin }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
     const navigate = useNavigate();
-
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate({ to: '/dashboard' });
+        }
+    }, [isAuthenticated, navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             setLoading(true);
+            setError('');
             const data = await loginUser(email, password);
             dispatch(login(data.user))
-            await navigate({to: '/dashboard'});
             setEmail('');
             setPassword('');
-        } catch (error) {
-            console.error(error);
+        } catch (err) {
+            setError(err.response?.data?.message || 'Login failed. Please try again.');
+            console.error(err);
         } finally {
             setLoading(false);
         }
@@ -34,7 +43,7 @@ const LoginForm = ({setLogin}) => {
     return (
         <div className="bg-saffron border-2 border-black rounded-2xl shadow-[4px_4px_0_0_#000] p-8 md:w-full  max-w-md">
             <h2 className="text-2xl font-extrabold text-eerie-black text-center mb-6 ">Login</h2>
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <form onSubmit={(e) => handleSubmit(e)} className="flex flex-col gap-4">
                 <div className={'flex flex-col gap-2'}>
                     <label htmlFor={'email'}>Email:</label>
                     <input
@@ -65,10 +74,10 @@ const LoginForm = ({setLogin}) => {
                         >
                             {showPassword ? (
                                 // Eye open SVG
-                                <FaRegEye size={22}/>
+                                <FaRegEye size={22} />
                             ) : (
                                 // Eye closed SVG
-                                <FaRegEyeSlash size={22}/>
+                                <FaRegEyeSlash size={22} />
                             )}
                         </button>
                     </div>
@@ -86,6 +95,7 @@ const LoginForm = ({setLogin}) => {
                         'LOGIN'
                     )}
                 </button>
+                {error && <ErrorBox error={error} />}
             </form>
             <div className="text-center mt-4">
                 <span className="text-eerie-black ">Don't have an account?</span>

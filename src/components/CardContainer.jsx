@@ -13,12 +13,12 @@ const CardContainer = () => {
         },
         {
             icon: <MdOutlineAnalytics  size={40}/>,
-            title: "Smart Targeting",
-            subtitle : "Target your customers to increase your reach and redirect them to relevant page. Add a pixel to retarget them to your social media and campaign to capture them.",
+            title: "In-Depth Analytics",
+            subtitle : "Share your links to your network and measure data to optimize your marketing campaign's performance. Reach an audience that fits your needs.",
         },        {
             icon: <GiLaptop  size={40}/>,
-            title: "Smart Targeting",
-            subtitle : "Target your customers to increase your reach and redirect them to relevant page. Add a pixel to retarget them to your social media and campaign to capture them.",
+            title: "Digital Experience",
+            subtitle : "Use various powerful tools increase conversion and provide a non-intrusive experience to your customers without disengaging them.",
         },
     ]
 
