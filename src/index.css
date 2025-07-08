@@ -1,5 +1,27 @@
 @import "tailwindcss";
 
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 4px;
+    background: gray;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(57, 56, 56);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #222;
+}
+
+/* Firefox */
+/* * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-platinum-400, #a0b7ab) var(--color-platinum-900, #f6f8f7);
+} */
+
 @theme {
     /* Platinum */
     --color-platinum: #cfdbd5;
