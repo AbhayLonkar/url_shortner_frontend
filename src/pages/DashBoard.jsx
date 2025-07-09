@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { logout } from '../../store/slice/authSlice';
 import { useEffect } from "react";
 import Loading from "../components/Loading";
+import UrlDetails from "../components/UrlDetails.jsx";
 
 const DashBoard = () => {
   const navigate = useNavigate();
@@ -35,74 +36,23 @@ const DashBoard = () => {
 
   return (
     <div className="px-4 py-8  bg-pink-100 w-full flex md:flex-row  justify-center md:items-start gap-3 flex-col items-center  flex-wrap ">
-      <div className="mb-8  ">
+      <div className=" flex justify-center items-center mb-8 md:h-110 ">
         <CustomUrlForm />
       </div>
 
-      <div className="bg-yellow-100 border-2 border-black rounded-2xl shadow-[2px_2px_0_0_#000] p-6 max-w-4xl  h-110  w-full ">
-        <h2 className="text-2xl font-extrabold text-black mb-6 text-center drop-shadow-[2px_2px_0_#fff]">
+      <div className="bg-yellow-100 border-2 border-black rounded-lg shadow-[2px_2px_0_0_#000] p-6 max-w-4xl  md:h-110 h-min   w-full ">
+        <h2 className="text-2xl font-extrabold text-black mb-6 text-center drop-shadow-[2px_2px_0_#fff] underline  underline-offset-4">
           Your Shortened Links
         </h2>
 
         {isLoading && <Loading />}
 
         {!isLoading && !isError && data?.urls?.length > 0 && (
-          <div className="overflow-x-auto overflow-y-auto h-88">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr className="bg-white border-4 border-black">
-                  <th className="px-4 py-2 text-left">Sr. No</th>
-                  <th className="px-4 py-2 text-left">Generated Links</th>
-                  <th className="px-4 py-2 text-left">Clicks</th>
-                  <th className="px-4 py-2 text-left">Original Link</th>
-                  <th className="px-4 py-2 text-left">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
+            <div className="flex flex-wrap justify-center items-center gap-2 overflow-y-auto h-88 w-full">
                 {data.urls.map((item, index) => (
-                  <tr key={item._id} className="border-b-4 border-black bg-white">
-                    <td className="px-4 py-3 font-bold">{index + 1}</td>
-                    <td className="px-4 py-3">
-                      <span className=" text-blue-700 break-all">
-                        {item.createdUrl}
-                      </span>
-                    </td>
-                    <td className="px-4 py-3 font-bold">{item.clicks ?? 0}</td>
-                    <td className="px-4 py-3">
-                      <span className="text-gray-600 break-all">
-                        {item.originalUrl}
-                      </span>
-                    </td>
-                    <td className="px-4 py-3">
-                      <div className="flex gap-2">
-                        <button
-                          className="bg-pink-400 border-2 border-black rounded-lg px-3 py-1 font-bold text-black shadow-[2px_2px_0_0_#000] hover:bg-pink-300 transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow"
-                          onClick={() => navigator.clipboard.writeText(item.createdUrl)}
-                        >
-                          Copy
-                        </button>
-                        <a
-                          href={item.createdUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="bg-blue-400 border-2 border-black rounded-lg px-3 py-1 font-bold text-black shadow-[2px_2px_0_0_#000] hover:bg-blue-300 transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow"
-                        >
-                          Visit
-                        </a>
-                        <button
-                          className="bg-red-400 border-2 border-black rounded-lg px-3 py-1 font-bold text-black shadow-[2px_2px_0_0_#000] hover:bg-red-300 transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow"
-                          onClick={() => deleteMutation.mutate(item.shortUrl)}
-                          disabled={deleteMutation.isLoading}
-                        >
-                          {deleteMutation.isLoading ? 'Deleting...' : 'Delete'}
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
+                  <UrlDetails item={item} index={index} key={item._id} deleteMutation={deleteMutation} />
                 ))}
-              </tbody>
-            </table>
-          </div>
+            </div>
         )}
 
         {!isLoading && !isError && (!data?.urls || data.urls.length === 0) && (

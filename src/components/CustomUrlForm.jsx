@@ -46,27 +46,27 @@ const CustomUrlForm = () => {
   };
 
   return (
-    <div className="bg-yellow-100 border-2  rounded-lg shadow-[3px_3px_0_0_#000] p-8 w-full  ">
+    <div className="bg-yellow-100 border-2  rounded-lg shadow-[3px_3px_0_0_#000] p-8 w-full md:h-full flex flex-col gap-2 justify-center">
       <h1 className="text-3xl font-extrabold text-eerie-black text-center mb-6">Custom URL Shortener</h1>
       <form onSubmit={(e) => addMutation.mutate(e)} className="flex flex-col gap-4">
         <input
           type="url"
-          className="px-4 py-2 rounded-lg text-sm border-2 bg-white text-eerie-black  shadow-[2px_2px_0_0_#000] focus:outline-none focus:ring-0"
+          className="px-4 py-3 rounded-lg  text-sm border-2 bg-white text-eerie-black  shadow-[2px_2px_0_0_#000] focus:outline-none focus:ring-0"
           placeholder="Paste your long URL here..."
           value={url}
-          onChange={e => { setUrl(e.target.value); setError(''); }}
+          onChange={e => { setShortUrl(""); setUrl(e.target.value); setError(''); }}
           required
         />
         <input
           type="text"
-          className="px-4 py-2 rounded-lg text-sm border-2 border-black bg-white text-eerie-black  shadow-[2px_2px_0_0_#000] focus:outline-none focus:ring-0"
+          className="px-4 py-3 rounded-lg text-sm border-2 border-black bg-white text-eerie-black  shadow-[2px_2px_0_0_#000] focus:outline-none focus:ring-0"
           placeholder="Custom slug (e.g. my-link)"
           value={slug}
-          onChange={e => { setSlug(e.target.value); setError(''); }}
+          onChange={e => {setShortUrl(""); setSlug(e.target.value); setError(''); }}
         />
         <button
           type="submit"
-          className="bg-pink-400 border-2  text-eerie-black font-bold py-2 rounded-lg shadow-[2px_2px_0_0_#000] hover:bg-pink-300 active:shadow active:translate-1 transition flex items-center justify-center text-sm"
+          className="bg-pink-400 border-2 py-3  text-eerie-black font-bold  rounded-lg shadow-[2px_2px_0_0_#000] hover:bg-pink-300 active:shadow active:translate-1 transition flex items-center justify-center text-sm"
           disabled={loading}
         >
           {loading ? <Loading /> : 'Shorten URL'}
@@ -83,12 +83,12 @@ const CustomUrlForm = () => {
                 type="text"
                 value={shortUrl}
                 readOnly
-                className="flex-1 px-3 py-2 rounded-xl border-4 border-black bg-white text-eerie-black  shadow-[2px_2px_0_0_#000] focus:outline-none focus:ring-0 text-ellipsis"
+                className="px-4 py-3 rounded-lg text-sm border-2 w-full  border-black bg-white text-eerie-black  shadow-[2px_2px_0_0_#000] focus:outline-none focus:ring-0 text-ellipsis"
               />
               <button
                 onClick={handleCopy}
                 type="button"
-                className={`w-22 border-4 border-black font-bold py-2 px-4 rounded-xl shadow-[2px_2px_0_0_#000] transition-all duration-300 ${copied ? 'bg-green-400 text-white' : 'bg-pink-400 text-eerie-black hover:bg-pink-300'} hover:cursor-pointer active:shadow active:translate-x-1 active:translate-y-1`}
+                className={` border-2 border-black font-bold py-3 w-1/3 rounded-lg shadow-[2px_2px_0_0_#000] transition-all duration-300 ${copied ? 'bg-green-400 text-white' : 'bg-pink-400 text-eerie-black hover:bg-pink-300'} hover:cursor-pointer active:shadow active:translate-x-1 active:translate-y-1`}
               >
                 {copied ? 'Copied!' : 'Copy'}
               </button>

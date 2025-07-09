@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import Tag from "../components/Tag.jsx";
 import {createShortUrl} from "../api/shortUrl.api.js";
 import Loading from "../components/Loading.jsx";
+import ErrorBox from "../components/ErrorBox.jsx";
 
 const HomeSection = () => {
 
@@ -51,9 +52,10 @@ const HomeSection = () => {
                         A short link allows you to collect so much data about your consumers & their behaviours.
                     </p>
                     <form className={'flex justify-center items-center w-full relative'} onSubmit={handleClick}>
-                        <input type={'url'} placeholder={'Paste a link to shorten it'}
+                        <input type={'url'} placeholder={'Paste a link to shorten it eg. https://example.com'}
                                onChange={(e) => handleOnChange(e)}
                                value={input}
+                               required={true}
                                className={'p-3 py-4 border bg-white rounded-lg w-full shadow-[4px_4px_0_0_#000] outline-0'}/>
                         <button  type={'submit'}
                             className={'absolute border right-3 py-2.5 w-25 h-11 rounded-lg bg-saffron text-eerie-black font-bold shadow-[3px_3px_0_0_#000] cursor-pointer transition-all active:translate-y-1 active:translate-x-1 active:shadow'}>
@@ -74,10 +76,7 @@ const HomeSection = () => {
                     }
 
                     {error && !loading &&
-                        <div
-                            className={'p-3 py-4 bg-red-100 text-red-600 border-2 border-red-400 rounded-lg w-full shadow-[4px_4px_0_0_#000] font-medium'}>
-                            {error}
-                        </div>
+                        <ErrorBox error={error} />
                     }
 
                 </div>
