@@ -2,14 +2,16 @@
 
 /* Custom scrollbar styles */
 ::-webkit-scrollbar {
+    height: 4px;
     width: 4px;
+    visibility: hidden;
     border-radius: 4px;
-    background: gray;
+    background: #aaaaaa;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgb(57, 56, 56);
-    border-radius: 4px;
+    /*background: rgb(103, 96, 96);*/
+    /*border-radius: 4px;*/
 }
 
 ::-webkit-scrollbar-thumb:hover {
