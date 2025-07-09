@@ -15,7 +15,6 @@ const App = () => {
             })
             .catch(() => {
                 dispatch(logout());
-                console.log('User is not authenticated from app.js');
             })
     }, [dispatch]);
     return (
