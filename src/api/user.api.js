@@ -27,3 +27,13 @@ export const deleteUrl = async (id) => {
   const { data } = await axiosInstance.delete(`http://localhost:3000/api/user/delete/${id}`);
   return data;
 }
+
+export const sendOTP = async (email) => {
+  const response = await axiosInstance.post('/api/otp/send', { email });
+  return response.data;
+};
+
+export const verifyOTP = async (email, otp) => {
+  const response = await axiosInstance.post('/api/otp/verify', { email, otp });
+  return response.data;
+};
