@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "@tanstack/react-router"
 
-import { loginUser } from '../api/user.api';
+import { googleLogin, loginUser } from '../api/user.api';
 import { login } from '../../store/slice/authSlice.js';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import ErrorBox from './ErrorBox.jsx';
+import Loading from './Loading.jsx';
 
 const LoginForm = ({ setLogin }) => {
     const [email, setEmail] = useState('');
@@ -39,6 +40,10 @@ const LoginForm = ({ setLogin }) => {
             setLoading(false);
         }
     };
+
+    const handleGoogleLogin = () => {
+        window.location.href = 'http://localhost:3000/api/auth/google';
+    }
 
     return (
         <div className="bg-saffron border-2 border-black rounded-2xl shadow-[4px_4px_0_0_#000] p-8 md:w-full  max-w-md">
@@ -95,8 +100,16 @@ const LoginForm = ({ setLogin }) => {
                         'LOGIN'
                     )}
                 </button>
+
                 {error && <ErrorBox error={error} />}
             </form>
+            <button
+                type="button"
+                onClick={handleGoogleLogin}
+                className="bg-pink-400 cursor-pointer border-2 border-black text-eerie-black font-bold py-3 rounded-xl text-sm shadow-[3px_3px_0_0_#000] hover:bg-pink-300 active:translate-1 active:shadow transition flex items-center justify-center"
+            >
+                LOGIN WITH GOOGLE
+            </button>
             <div className="text-center mt-4">
                 <span className="text-eerie-black ">Don't have an account?</span>
                 <button

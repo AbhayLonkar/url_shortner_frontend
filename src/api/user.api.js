@@ -37,3 +37,13 @@ export const verifyOTP = async (email, otp) => {
   const response = await axiosInstance.post('/api/otp/verify', { email, otp });
   return response.data;
 };
+
+export const googleLogin = async () => {
+  const response = await axiosInstance.get('/api/auth/google');
+  return response.data;
+}
+
+export const logout = async () => {
+  const response = await axiosInstance.get('/api/auth/logout');
+  return response.data;
+}
