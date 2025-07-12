@@ -18,11 +18,12 @@ const LoginForm = ({ setLogin }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        if (isAuthenticated) {
-            navigate({ to: '/dashboard' });
-        }
-    }, [isAuthenticated, navigate]);
+    // useEffect(() => {
+    //     console.log(isAuthenticated, 'isAuthenticated from login form');
+    //     if (isAuthenticated) {
+    //         navigate({ to: '/dashboard' });
+    //     }
+    // }, [isAuthenticated, navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -93,12 +94,7 @@ const LoginForm = ({ setLogin }) => {
                     className="bg-pink-400 cursor-pointer border-2 border-black text-eerie-black font-bold py-3 rounded-xl text-sm shadow-[3px_3px_0_0_#000] hover:bg-pink-300 active:translate-1 active:shadow transition flex items-center justify-center"
                     disabled={loading}
                 >
-                    {loading ? (
-                        <div
-                            className="self-center border-dashed border-l-gray-600 border-t-gray-600 animate-spin border-3 size-7 rounded-full"></div>
-                    ) : (
-                        'LOGIN'
-                    )}
+                    {loading ? <Loading /> : 'LOGIN'}
                 </button>
 
                 {error && <ErrorBox error={error} />}
@@ -106,7 +102,7 @@ const LoginForm = ({ setLogin }) => {
             <button
                 type="button"
                 onClick={handleGoogleLogin}
-                className="bg-pink-400 cursor-pointer border-2 border-black text-eerie-black font-bold py-3 rounded-xl text-sm shadow-[3px_3px_0_0_#000] hover:bg-pink-300 active:translate-1 active:shadow transition flex items-center justify-center"
+                className="mt-2 bg-white cursor-pointer border-2 w-full text-eerie-black font-bold py-3 rounded-xl text-sm shadow-[3px_3px_0_0_#000] hover:bg-pink-100 active:translate-1 active:shadow transition flex items-center justify-center"
             >
                 LOGIN WITH GOOGLE
             </button>
@@ -114,7 +110,7 @@ const LoginForm = ({ setLogin }) => {
                 <span className="text-eerie-black ">Don't have an account?</span>
                 <button
                     type="button"
-                    className="ml-2 underline text-pink-600 font-bold hover:text-pink-800 transition"
+                    className="cursor-pointer ml-2 underline text-pink-600 font-bold hover:text-pink-800 transition"
                     onClick={() => setLogin(prev => !prev)}
                 >
                     Create an account

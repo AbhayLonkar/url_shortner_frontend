@@ -9,14 +9,26 @@ export const registerUser = async (name, email, password) => {
   return data;
 }
 export const logoutUser = async () => {
-  const { data } = await axiosInstance.get('http://localhost:3000/api/auth/logout');
+  const { data } = await axiosInstance.get('/api/auth/logout');
   return data;
 }
 
 export const getCurrentUser = async () => {
-  const { data } = await axiosInstance.get('http://localhost:3000/api/auth/me');
-  return data;
-}
+  try {
+    const { data } = await axiosInstance.get('/api/auth/me', {
+      withCredentials: true, // 🔑 Make sure cookie is sent
+    });
+    console.log(data, 'current user data');
+    return data.user; // 🔍 adjust this based on actual response structure
+  } catch (err) {
+    if (err.response && err.response.status === 401) {
+      // Explicitly throw for unauthorized
+      throw new Error('Unauthorized');
+    }
+    throw err; // Re-throw other errors like 500, network issues
+  }
+};
+
 
 export const getUrls = async () => {
   const { data } = await axiosInstance.get('http://localhost:3000/api/user/urls');
@@ -43,7 +55,3 @@ export const googleLogin = async () => {
   return response.data;
 }
 
-export const logout = async () => {
-  const response = await axiosInstance.get('/api/auth/logout');
-  return response.data;
-}

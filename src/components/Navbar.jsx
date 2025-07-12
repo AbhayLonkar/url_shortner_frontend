@@ -1,18 +1,31 @@
 import React from 'react';
-import { Link, useNavigate } from '@tanstack/react-router';
-import { useSelector } from "react-redux";
+import { Link, redirect, useNavigate } from '@tanstack/react-router';
+import { useDispatch, useSelector } from "react-redux";
 import { IoMdHome } from "react-icons/io";
 import { FaGithub } from "react-icons/fa";
 import { CgLogOut } from 'react-icons/cg';
-import { logout } from '../api/user.api';
+import { logout } from '../../store/slice/authSlice.js';
+import { logoutUser } from '../api/user.api.js';
+import { useQueryClient } from '@tanstack/react-query';
+
 
 const Navbar = () => {
-    const { isAuthenticated } = useSelector((state) => state.auth);
+    const { isAuthenticated, user } = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const queryClient = useQueryClient();
+
     const handleLogout = async () => {
-        const data = await logout();
+        console.log(isAuthenticated, 'isAuthenticated from navbar');
+        console.log(user, 'user from navbar');
+        queryClient.removeQueries(['currentUser']);
+        const data = await logoutUser();
         console.log(data);
-        navigate({ to: '/auth' });
+        if (data.success) {
+            navigate({ to: "/auth?mode=login" });
+        }
+        dispatch(logout());
     }
 
     return (
@@ -51,7 +64,7 @@ const Navbar = () => {
                     <FaGithub size={22} />
                 </a>
                 <button
-                    onClick={handleLogout}
+                    onClick={() => handleLogout()}
                     className="bg-white border-2 border-black shadow-[2px_2px_0_0_#000] rounded-md px-4 py-2 font-bold text-black hover:bg-pink-300 transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow"
                 >
                     <CgLogOut size={22} />

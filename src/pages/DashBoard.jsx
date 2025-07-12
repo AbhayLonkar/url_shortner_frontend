@@ -2,7 +2,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import { getUrls, deleteUrl } from '../api/user.api'
 import CustomUrlForm from '../components/CustomUrlForm';
 import { useNavigate } from '@tanstack/react-router';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../store/slice/authSlice';
 import { useEffect } from "react";
 import Loading from "../components/Loading";
@@ -26,13 +26,19 @@ const DashBoard = () => {
     },
   });
 
+  const { isAuthenticated } = useSelector((state) => state.auth);
+  console.log(isAuthenticated, 'isAuthenticated from dashboard');
   useEffect(() => {
-    if (error && error.response && error.response.status === 401) {
+
+    // If the user is not authenticated or the token is invalid, redirect to login
+    // and reset the query state
+
+    if (!isAuthenticated || error && error.response && error.response.status === 401) {
       dispatch(logout());
       queryClient.removeQueries(['userUrls']); // Reset the query state, including error
-      navigate({ to: '/auth' });
+      navigate({ from: '/dashboard', to: '/auth' });
     }
-  }, [error, dispatch, navigate, queryClient]);
+  }, [error, dispatch, navigate, queryClient, isAuthenticated]);
 
   return (
     <div className="px-4 py-8  bg-pink-100 w-full flex md:flex-row  justify-center md:items-start gap-3 flex-col items-center  flex-wrap ">
@@ -48,11 +54,11 @@ const DashBoard = () => {
         {isLoading && <Loading />}
 
         {!isLoading && !isError && data?.urls?.length > 0 && (
-            <div className="flex flex-wrap justify-center items-center gap-2 overflow-y-auto h-88 w-full">
-                {data.urls.map((item, index) => (
-                  <UrlDetails item={item} index={index} key={item._id} deleteMutation={deleteMutation} />
-                ))}
-            </div>
+          <div className="flex flex-wrap justify-center items-center gap-2 overflow-y-auto h-88 w-full">
+            {data.urls.map((item, index) => (
+              <UrlDetails item={item} index={index} key={item._id} deleteMutation={deleteMutation} />
+            ))}
+          </div>
         )}
 
         {!isLoading && !isError && (!data?.urls || data.urls.length === 0) && (
