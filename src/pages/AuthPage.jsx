@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import RegisterForm from '../components/RegisterForm'
 import LoginForm from '../components/LoginForm'
 
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true)
+
   return (
     <div className="flex flex-wrap items-center justify-center w-full min-h-screen h-auto md:flex-row flex-col bg-saffron-800 py-3 gap-2">
       <div

@@ -1,5 +1,4 @@
-import React from 'react';
-import { Link, redirect, useNavigate } from '@tanstack/react-router';
+import { Link, useNavigate } from '@tanstack/react-router';
 import { useDispatch, useSelector } from "react-redux";
 import { IoMdHome } from "react-icons/io";
 import { FaGithub } from "react-icons/fa";
@@ -7,25 +6,30 @@ import { CgLogOut } from 'react-icons/cg';
 import { logout } from '../../store/slice/authSlice.js';
 import { logoutUser } from '../api/user.api.js';
 import { useQueryClient } from '@tanstack/react-query';
+import { useEffect } from 'react';
 
 
 const Navbar = () => {
     const { isAuthenticated, user } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
     const queryClient = useQueryClient();
 
+    useEffect(() => {
+        console.log('Updated isAuthenticated:', isAuthenticated);
+        console.log('Updated user:', user);
+    }, [isAuthenticated, user]);
+
     const handleLogout = async () => {
-        console.log(isAuthenticated, 'isAuthenticated from navbar');
-        console.log(user, 'user from navbar');
-        queryClient.removeQueries(['currentUser']);
-        const data = await logoutUser();
-        console.log(data);
-        if (data.success) {
-            navigate({ to: "/auth?mode=login" });
+        try {
+            const data = await logoutUser();
+            console.log(data);
+            queryClient.removeQueries(['currentUser']);
+            dispatch(logout());
+            navigate({ to: "/auth" });
+        } catch (error) {
+            console.error('Logout failed:', error);
         }
-        dispatch(logout());
     }
 
     return (
@@ -50,7 +54,7 @@ const Navbar = () => {
             <div className="flex gap-2 items-center">
                 {!isAuthenticated &&
                     <Link
-                        to="/auth?mode=login"
+                        to="/auth"
                         className="px-4 py-2 font-bold border-2 border-black rounded-md bg-white text-black shadow-[2px_2px_0_0_#000] hover:bg-pink-200 transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow">
                         Login
                     </Link>

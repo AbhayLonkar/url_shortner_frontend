@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "@tanstack/react-router"
 
-import { googleLogin, loginUser } from '../api/user.api';
+import { getCurrentUser, googleLogin, loginUser } from '../api/user.api';
 import { login } from '../../store/slice/authSlice.js';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import ErrorBox from './ErrorBox.jsx';
@@ -18,12 +18,14 @@ const LoginForm = ({ setLogin }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+
     // useEffect(() => {
-    //     console.log(isAuthenticated, 'isAuthenticated from login form');
-    //     if (isAuthenticated) {
-    //         navigate({ to: '/dashboard' });
+    //     const fetchUser = async () => {
+    //         const data = await getCurrentUser();
+    //         console.log(data);
     //     }
-    // }, [isAuthenticated, navigate]);
+    //     fetchUser();
+    // }, [navigate])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -31,9 +33,11 @@ const LoginForm = ({ setLogin }) => {
             setLoading(true);
             setError('');
             const data = await loginUser(email, password);
+            console.log(data, 'from login form');
             dispatch(login(data.user))
             setEmail('');
             setPassword('');
+            navigate({ to: "/dashboard" });
         } catch (err) {
             setError(err.response?.data?.message || 'Login failed. Please try again.');
             console.error(err);
