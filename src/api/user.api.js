@@ -18,7 +18,6 @@ export const getCurrentUser = async () => {
     const { data } = await axiosInstance.get('/api/auth/me', {
       withCredentials: true, // 🔑 Make sure cookie is sent
     });
-    console.log(data, 'current user data');
     return data.user; // 🔍 adjust this based on actual response structure
   } catch (err) {
     if (err.response && err.response.status === 401) {

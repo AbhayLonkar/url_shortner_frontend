@@ -6,19 +6,12 @@ import { CgLogOut } from 'react-icons/cg';
 import { logout } from '../../store/slice/authSlice.js';
 import { logoutUser } from '../api/user.api.js';
 import { useQueryClient } from '@tanstack/react-query';
-import { useEffect } from 'react';
-
 
 const Navbar = () => {
-    const { isAuthenticated, user } = useSelector((state) => state.auth);
+    const { isAuthenticated } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const queryClient = useQueryClient();
-
-    useEffect(() => {
-        console.log('Updated isAuthenticated:', isAuthenticated);
-        console.log('Updated user:', user);
-    }, [isAuthenticated, user]);
 
     const handleLogout = async () => {
         try {

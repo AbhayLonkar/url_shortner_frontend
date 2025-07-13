@@ -4,8 +4,6 @@ import { getCurrentUser } from "../api/user.api";
 
 export const checkAuth = async ({ context }) => {
   const { queryClient, store } = context;
-  console.log(store.getState(), 'store state from checkAuth');
-  console.log(store)
   try {
     const user = await queryClient.ensureQueryData({
       queryKey: ["currentUser"],

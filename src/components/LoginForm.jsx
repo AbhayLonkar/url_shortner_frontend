@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from "@tanstack/react-router"
-
-import { getCurrentUser, googleLogin, loginUser } from '../api/user.api';
 import { login } from '../../store/slice/authSlice.js';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import ErrorBox from './ErrorBox.jsx';
 import Loading from './Loading.jsx';
+import { loginUser } from '../api/user.api.js';
 
 const LoginForm = ({ setLogin }) => {
     const [email, setEmail] = useState('');
@@ -14,18 +13,8 @@ const LoginForm = ({ setLogin }) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
-    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
-
-    // useEffect(() => {
-    //     const fetchUser = async () => {
-    //         const data = await getCurrentUser();
-    //         console.log(data);
-    //     }
-    //     fetchUser();
-    // }, [navigate])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
