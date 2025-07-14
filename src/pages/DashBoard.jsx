@@ -28,7 +28,6 @@ const DashBoard = () => {
   });
 
   const { isAuthenticated } = useSelector((state) => state.auth);
-  console.log(isAuthenticated, 'isAuthenticated from dashboard');
   useEffect(() => {
 
     // If the user is not authenticated or the token is invalid, redirect to login

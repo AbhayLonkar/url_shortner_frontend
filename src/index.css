@@ -4,50 +4,22 @@
 ::-webkit-scrollbar {
     height: 4px;
     width: 4px;
-    visibility: hidden;
     border-radius: 4px;
-    background: #aaaaaa;
+    background: #a1a0a09a;
 }
 
 ::-webkit-scrollbar-thumb {
-    /*background: rgb(103, 96, 96);*/
-    /*border-radius: 4px;*/
+    background: rgb(103, 96, 96);
+    border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
     background: #222;
 }
 
-/* Firefox */
-/* * {
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-platinum-400, #a0b7ab) var(--color-platinum-900, #f6f8f7);
-} */
 
 @theme {
-    /* Platinum */
-    --color-platinum: #cfdbd5;
-    --color-platinum-100: #25312b;
-    --color-platinum-200: #4a6256;
-    --color-platinum-300: #6f9281;
-    --color-platinum-400: #a0b7ab;
-    --color-platinum-500: #cfdbd5;
-    --color-platinum-600: #dae3de;
-    --color-platinum-700: #e3eae7;
-    --color-platinum-800: #ecf1ef;
-    --color-platinum-900: #f6f8f7;
 
-    /* Alabaster */
-    --color-alabaster: #e8eddf;
-    --color-alabaster-100: #323b21;
-    --color-alabaster-200: #647642;
-    --color-alabaster-300: #94ab69;
-    --color-alabaster-400: #becca4;
-    --color-alabaster-500: #e8eddf;
-    --color-alabaster-600: #ecf0e5;
-    --color-alabaster-700: #f1f4eb;
-    --color-alabaster-800: #f6f8f2;
-    --color-alabaster-900: #fafbf8;
 
     /* Saffron */
     --color-saffron: #f5cb5c;
@@ -73,15 +45,4 @@
     --color-eerie-black-800: #a8a8a6;
     --color-eerie-black-900: #d4d4d3;
 
-    /* Jet */
-    --color-jet: #333533;
-    --color-jet-100: #0a0a0a;
-    --color-jet-200: #141514;
-    --color-jet-300: #1e1f1e;
-    --color-jet-400: #282a28;
-    --color-jet-500: #333533;
-    --color-jet-600: #5a5e5a;
-    --color-jet-700: #828782;
-    --color-jet-800: #acafac;
-    --color-jet-900: #d5d7d5;
 }

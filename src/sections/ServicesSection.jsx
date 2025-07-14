@@ -1,38 +1,38 @@
 import React from 'react'
 import Tag from "../components/Tag.jsx";
-import {AiFillThunderbolt} from "react-icons/ai";
-import {BsGraphUpArrow} from "react-icons/bs";
-import {FaLink, FaUserCircle} from "react-icons/fa";
-import {MdKeyboardArrowRight, MdOutlineDashboardCustomize, MdOutlinePrivacyTip} from "react-icons/md";
+import { AiFillThunderbolt } from "react-icons/ai";
+import { BsGraphUpArrow } from "react-icons/bs";
+import { FaLink, FaUserCircle } from "react-icons/fa";
+import { MdKeyboardArrowRight, MdOutlineDashboardCustomize, MdOutlinePrivacyTip } from "react-icons/md";
 
 const ServicesSection = () => {
     return <>
-        <section id={'services'} className={'bg-saffron-800 flex justify-center items-center py-10 md:min-h-[90vh] border-b-4'}>
+        <section id={'services'} className={'bg-saffron-800 flex justify-center items-center py-10 md:min-h-[90vh] border-b-4 bg-[url(/images/bg.png)] bg-center '}>
             <div className={'flex justify-center items-center gap-2 md:flex-row flex-col  px-3'}>
                 <div
                     className={'flex md:justify-center items-center flex-col md:w-1/2 max-w-lg w-[95%] h-100 p-3'}>
-                    <img src={'/images/analytic.png'} alt={'link-it'} className={'h-full object-cover'}/>
+                    <img src={'/images/analytic.png'} alt={'link-it'} className={'h-full object-cover'} />
                 </div>
                 <div className={'flex flex-col p-3 justify-center gap-2 md:w-1/3 w-[70%] '}>
-                    <Tag text={'Sales & Marketing'}/>
+                    <Tag text={'Sales & Marketing'} />
                     <h2 className={'text-eerie-black text-5xl font-bold'}>Perfect for Sales & Marketing </h2>
-                    <p className={'font-semibold  my-5 text-eerie-black-700 '}>
+                    <p className={'font-semibold  my-5 text-eerie-black-500 '}>
                         Understanding your users and customers will help you increase your conversion. Our system
                         allow you to track everything. Whether it is the amount of clicks,the country of the
                         referer, the data is there for you to analyze it.
                     </p>
                     <div className={'flex flex-col gap-1 '}>
-                            <span
-                                className={'flex justify-around w-44 items-center p-0.5 h-8 border rounded-lg shadow-[2px_2px_0_#000]  bg-saffron-600'}>
-                                <AiFillThunderbolt size={20}/>  Redirection Tools
-                            </span>
+                        <span
+                            className={'flex justify-around w-44 items-center p-0.5 h-8 border rounded-lg shadow-[2px_2px_0_#000]  bg-saffron-600'}>
+                            <AiFillThunderbolt size={20} />  Redirection Tools
+                        </span>
                         <span
                             className={'flex justify-around w-44 h-8 items-center p-0.5 border rounded-lg shadow-[2px_2px_0_#000] bg-saffron-600'}>
-                                <BsGraphUpArrow size={20}/>  Powerful Statistics
-                            </span> <span
-                        className={'flex justify-around w-44 h-8 items-center p-0.5 border rounded-lg shadow-[2px_2px_0_#000] bg-saffron-600'}>
-                                <FaUserCircle size={20}/>  Beautiful Profiles
-                            </span>
+                            <BsGraphUpArrow size={20} />  Powerful Statistics
+                        </span> <span
+                            className={'flex justify-around w-44 h-8 items-center p-0.5 border rounded-lg shadow-[2px_2px_0_#000] bg-saffron-600'}>
+                            <FaUserCircle size={20} />  Beautiful Profiles
+                        </span>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@ const ServicesSection = () => {
             <div className={'flex justify-center items-center gap-2 md:flex-row flex-col  px-3'}>
                 <div
                     className={'flex flex-col p-3 justify-center gap-2 md:w-1/3 w-[70%] '}>
-                    <Tag text={'Sales & Marketing'}/>
+                    <Tag text={'Sales & Marketing'} />
                     <h2 className={'text-eerie-black text-5xl font-bold'}>Powerful tools that work </h2>
                     <p className={'font-semibold  my-5 text-eerie-black-700 '}>
                         Our product let you target your users to better understand their behavior and provide them a
@@ -51,43 +51,43 @@ const ServicesSection = () => {
                         reach them better.
                     </p>
                     <div className={'flex flex-col gap-1 '}>
-                            <span
-                                className={'flex justify-around w-48 items-center p-0.5 h-8 border rounded-lg shadow-[2px_2px_0_#000]  bg-saffron-600'}>
-                                <FaLink size={20}/>  Link Management
-                            </span>
                         <span
                             className={'flex justify-around w-48 items-center p-0.5 h-8 border rounded-lg shadow-[2px_2px_0_#000]  bg-saffron-600'}>
-                                <MdOutlinePrivacyTip size={20}/>  Privacy Control
-                            </span> <span
-                        className={'flex justify-around w-48 items-center p-0.5 h-8 border rounded-lg shadow-[2px_2px_0_#000]  bg-saffron-600'}>
-                                <MdOutlineDashboardCustomize size={20}/>  Powerful Dashboard
-                            </span>
+                            <FaLink size={20} />  Link Management
+                        </span>
+                        <span
+                            className={'flex justify-around w-48 items-center p-0.5 h-8 border rounded-lg shadow-[2px_2px_0_#000]  bg-saffron-600'}>
+                            <MdOutlinePrivacyTip size={20} />  Privacy Control
+                        </span> <span
+                            className={'flex justify-around w-48 items-center p-0.5 h-8 border rounded-lg shadow-[2px_2px_0_#000]  bg-saffron-600'}>
+                            <MdOutlineDashboardCustomize size={20} />  Powerful Dashboard
+                        </span>
                     </div>
                 </div>
 
                 <div
                     className={'flex md:justify-center items-center flex-col md:w-1/2 max-w-lg w-[95%] h-100 p-3'}>
-                    <img src={'/images/security.png'} alt={'link-it'} className={'h-auto object-cover'}/>
+                    <img src={'/images/security.png'} alt={'link-it'} className={'h-auto object-cover'} />
                 </div>
             </div>
         </section>
 
-        <section className={'bg-saffron-800 flex justify-center items-center py-10 md:min-h-[90vh] border-b-4'}>
+        <section className={'bg-saffron-800 bg-[url(/images/bg.png)] bg-center  flex justify-center items-center py-10 md:min-h-[90vh] border-b-4'}>
             <div className={'flex justify-center items-center gap-2 md:flex-row flex-col  px-3'}>
                 <div
                     className={'flex md:justify-center items-center flex-col md:w-1/2 max-w-lg w-[95%] h-100 p-3'}>
-                    <img src={'/images/qr.png'} alt={'link-it'} className={'h-full object-cover'}/>
+                    <img src={'/images/qr.png'} alt={'link-it'} className={'h-full object-cover'} />
                 </div>
                 <div className={'flex flex-col p-3 justify-center gap-2 md:w-1/3 w-[70%] '}>
-                    <Tag text={'QR Codes'}/>
+                    <Tag text={'QR Codes'} />
                     <h2 className={'text-eerie-black text-5xl font-bold'}>QR Code</h2>
-                    <p className={'font-semibold  my-5 text-eerie-black-700 '}>
+                    <p className={'font-semibold  my-5 text-eerie-black-500 '}>
                         Easy to use dynamic, customizable QR codes for your marketing campaigns. Analyze statistics
                         and optimize your marketing strategy and increase engagement.
                     </p>
                     <button
                         className={"my-2 border-2 bg-saffron rounded-lg px-5 py-2 w-max flex justify-center items-center font-bold text-sm shadow-[2px_2px_0_#000] active:shadow active:translate-1 transition-all cursor-pointer"}>
-                        Get Started <MdKeyboardArrowRight size={20}/>
+                        Get Started <MdKeyboardArrowRight size={20} />
                     </button>
                 </div>
             </div>

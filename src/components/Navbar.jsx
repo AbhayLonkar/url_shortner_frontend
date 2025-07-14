@@ -1,80 +1,100 @@
 import { Link, useNavigate } from '@tanstack/react-router';
 import { useDispatch, useSelector } from "react-redux";
 import { IoMdHome } from "react-icons/io";
-import { FaGithub } from "react-icons/fa";
-import { CgLogOut } from 'react-icons/cg';
+import { FaGithub, FaRegStar } from "react-icons/fa";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { logout } from '../../store/slice/authSlice.js';
 import { logoutUser } from '../api/user.api.js';
 import { useQueryClient } from '@tanstack/react-query';
+import Button from './Button.jsx';
+import GithubBtn from './GithubBtn.jsx';
+import LinkBtn from './LinkBtn.jsx';
+import { useState } from 'react';
 
 const Navbar = () => {
     const { isAuthenticated } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const queryClient = useQueryClient();
+    const [isOpen, setIsOpen] = useState(false);
 
     const handleLogout = async () => {
+        setIsOpen(false)
         try {
-            const data = await logoutUser();
-            console.log(data);
+            await logoutUser();
             queryClient.removeQueries(['currentUser']);
             dispatch(logout());
             navigate({ to: "/auth" });
         } catch (error) {
             console.error('Logout failed:', error);
         }
-    }
+    };
+
 
     return (
-        <nav
-            className="w-full bg-saffron border-b-4 border-black px-14 py-2 flex items-center justify-between ">
-            {/* Left: Brand Name */}
-            <span className="text-2xl font-extrabold text-black tracking-tight select-none">
-                ⁂ LinkIT
-            </span>
-            {/* Center: Main Links */}
-            {isAuthenticated && <div className="flex-1 flex justify-center gap-4">
-                <Link
-                    to="/dashboard"
-                    className="px-4 py-2 font-bold border-2 border-black rounded-md bg-white text-black shadow-[2px_2px_0_0_#000] hover:bg-blue-200 transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow"
-                >
-                    Dashboard
-                </Link>
-            </div>
-            }
+        <>
+            <nav className="w-full bg-saffron border-b-4 px-6 md:px-14 py-3 flex items-center justify-between">
+                {/* Brand */}
+                <span className="text-2xl font-extrabold text-eerie-black tracking-tight select-none">
+                    LinkIT
+                </span>
 
-            {/* Right: Auth Links & GitHub */}
-            <div className="flex gap-2 items-center">
-                {!isAuthenticated &&
-                    <Link
-                        to="/auth"
-                        className="px-4 py-2 font-bold border-2 border-black rounded-md bg-white text-black shadow-[2px_2px_0_0_#000] hover:bg-pink-200 transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow">
-                        Login
-                    </Link>
-                }
-                <a
-                    href="https://github.com/" // Change to your repo or about page
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-white border-2 border-black shadow-[2px_2px_0_0_#000] rounded-md px-4 py-2 font-bold text-black hover:bg-pink-300 transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow"
-                >
-                    <FaGithub size={22} />
-                </a>
-                <button
-                    onClick={() => handleLogout()}
-                    className="bg-white border-2 border-black shadow-[2px_2px_0_0_#000] rounded-md px-4 py-2 font-bold text-black hover:bg-pink-300 transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow"
-                >
-                    <CgLogOut size={22} />
-                </button>
-                <Link
-                    to="/"
-                    className="px-2 py-2 font-bold border-2 border-black rounded-md bg-saffron-900 text-black shadow-[2px_2px_0_0_#000] hover:bg-cyan-100 transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow"
-                >
-                    <IoMdHome size={22} />
+                {/* Desktop Menu */}
+                <div className="md:flex gap-2 items-center hidden">
+                    <LinkBtn to={'/'} text={<IoMdHome size={22} />} path='/' />
+
+                    {!isAuthenticated && <LinkBtn to={'/auth'} text={'Login'} path={'/auth'} />}
+                    {isAuthenticated && <LinkBtn to={'/dashboard'} text={'Dashboard'} path={'/dashboard'} />}
+                    {isAuthenticated && <Button text={"Logout"} onclick={handleLogout} />}
+
+                    <GithubBtn
+                        text={<FaRegStar size={22} />}
+                        onclick={() => window.open("https://github.com/AbhayLonkar/url_shortner_frontend", "_blank")}
+                        path='/git'
+                    />
+                </div>
+
+                {/* Mobile Toggle */}
+                <div className='md:hidden flex gap-3 items-center justify-center'>
+                    <GithubBtn
+                        text={<FaRegStar size={22} />}
+                        onclick={() => window.open("https://github.com/AbhayLonkar/url_shortner_frontend", "_blank")}
+                        path='/git'
+                    />
+                    <button className="md:hidden flex text-eerie-black" onClick={() => setIsOpen(prev => !prev)}>
+                        <GiHamburgerMenu size={24} />
+                    </button>
+                </div>
+            </nav>
+
+            {/* Mobile Menu */}
+            <div className={`md:hidden flex flex-col w-full  bg-saffron transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? "border-b-4 max-h-screen py-3 px-6" : "max-h-0 py-0 px-0"}`}>
+                <Link to='/' onClick={() => setIsOpen(false)}>
+                    <div className='py-2 border-b border-black text-eerie-black font-semibold text-center'>Home</div>
                 </Link>
+
+                {!isAuthenticated && (
+                    <Link to='/auth' onClick={() => setIsOpen(false)}>
+                        <div className='py-2 border-b border-black text-eerie-black font-semibold text-center'>Login</div>
+                    </Link>
+                )}
+
+                {isAuthenticated && (
+                    <>
+                        <Link to='/dashboard' onClick={() => setIsOpen(false)}>
+                            <div className='py-2 border-b border-black text-eerie-black font-semibold text-center'>Dashboard</div>
+                        </Link>
+                        <button
+                            onClick={handleLogout}
+                            className="py-2 border-black text-eerie-black font-semibold text-center"
+                        >
+                            Logout
+                        </button>
+                    </>
+                )}
             </div>
-        </nav>
-    )
+        </>
+    );
 };
 
 export default Navbar;

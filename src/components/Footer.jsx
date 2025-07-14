@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import {Link} from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -33,10 +33,10 @@ const Footer = () => {
                     <div>
                         <h3 className="text-xl font-bold mb-4">Connect With Us</h3>
                         <div className="flex space-x-4 items-center justify-center">
-                            <a href="https://github.com/abhaylonkar" className="text-eerie-black-600 hover:text-eerie-black transition-colors">
+                            <a href="https://github.com/abhaylonkar" target='_blank' className="text-eerie-black-600 hover:text-eerie-black transition-colors">
                                 <FaGithub size={24} />
                             </a>
-                            <a href="https://linkedin.com/in/abhaylonkar" className="text-eerie-black-600 hover:text-eerie-black transition-colors">
+                            <a href="https://linkedin.com/in/abhaylonkar" target='_blank' className="text-eerie-black-600 hover:text-eerie-black transition-colors">
                                 <FaLinkedin size={24} />
                             </a>
                         </div>

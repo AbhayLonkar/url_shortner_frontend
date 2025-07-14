@@ -95,8 +95,9 @@ const LoginForm = ({ setLogin }) => {
             <button
                 type="button"
                 onClick={handleGoogleLogin}
-                className="mt-2 bg-white cursor-pointer border-2 w-full text-eerie-black font-bold py-3 rounded-xl text-sm shadow-[3px_3px_0_0_#000] hover:bg-pink-100 active:translate-1 active:shadow transition flex items-center justify-center"
+                className="mt-2  bg-white cursor-pointer border-2 w-full text-eerie-black font-bold py-3 rounded-xl text-sm shadow-[3px_3px_0_0_#000] hover:bg-pink-100 active:translate-1 active:shadow transition flex gap-2 items-center justify-center"
             >
+                <img width={20} src="/images/google.png" alt="google logo" />
                 LOGIN WITH GOOGLE
             </button>
             <div className="text-center mt-4">
