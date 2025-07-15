@@ -1,13 +1,13 @@
-import { useNavigate } from '@tanstack/react-router';
-import React, { useState } from 'react';
-import { registerUser, sendOTP, verifyOTP } from '../api/user.api';
-import { useDispatch } from 'react-redux';
-import { login } from '../../store/slice/authSlice';
-import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import {useNavigate} from '@tanstack/react-router';
+import React, {useState} from 'react';
+import {registerUser, sendOTP} from '../api/user.api';
+import {useDispatch} from 'react-redux';
+import {login} from '../../store/slice/authSlice';
+import {FaRegEye, FaRegEyeSlash} from "react-icons/fa";
 import Loading from "./Loading.jsx";
 import OTPVerification from './OTPVerification.jsx';
 
-const RegisterForm = ({ setLogin }) => {
+const RegisterForm = ({setLogin}) => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -39,7 +39,7 @@ const RegisterForm = ({ setLogin }) => {
         try {
             const data = await registerUser(username, email, password);
             dispatch(login(data.user));
-            await navigate({ to: '/dashboard' });
+            await navigate({to: '/dashboard'});
         } catch (err) {
             setError(err.response?.data?.message || 'Registration failed. Please try again.');
         } finally {
@@ -55,7 +55,6 @@ const RegisterForm = ({ setLogin }) => {
                 <OTPVerification
                     email={email}
                     onVerificationSuccess={handleVerificationSuccess}
-                    onResendOTP={() => sendOTP(email)}
                 />
             ) : (
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -98,9 +97,9 @@ const RegisterForm = ({ setLogin }) => {
                                 onClick={() => setShowPassword((prev) => !prev)}
                             >
                                 {showPassword ? (
-                                    <FaRegEye size={22} />
+                                    <FaRegEye size={22}/>
                                 ) : (
-                                    <FaRegEyeSlash size={22} />
+                                    <FaRegEyeSlash size={22}/>
                                 )}
                             </button>
                         </div>
@@ -111,7 +110,7 @@ const RegisterForm = ({ setLogin }) => {
                         className="bg-pink-400 cursor-pointer border-2 border-black text-eerie-black font-bold py-3 rounded-xl text-sm shadow-[3px_3px_0_0_#000] hover:bg-pink-300 active:translate-1 active:shadow transition flex items-center justify-center"
                         disabled={loading || otpLoading}
                     >
-                        {(loading || otpLoading) ? <Loading /> : 'SIGNUP'}
+                        {(loading || otpLoading) ? <Loading/> : 'SIGNUP'}
                     </button>
                     {error && <div className="text-red-500 text-sm text-center mt-2">{error}</div>}
                 </form>
