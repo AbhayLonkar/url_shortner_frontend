@@ -27,7 +27,7 @@ const DashBoard = () => {
         },
     });
 
-    const {isAuthenticated} = useSelector((state) => state.auth);
+    const {isAuthenticated, user} = useSelector((state) => state.auth);
     useEffect(() => {
 
         // If the user is not authenticated or the token is invalid, redirect to login
@@ -42,36 +42,40 @@ const DashBoard = () => {
 
     return (
         <div
-            className="px-4 py-8  bg-pink-100 w-full flex md:flex-row  justify-center md:items-start gap-3 flex-col items-center  flex-wrap bg-[url(/images/bg.png)] bg-center ">
-            <div className=" flex justify-center items-center mb-8 md:h-110 ">
-                <CustomUrlForm/>
-            </div>
-
+            className="px-4 py-8  bg-pink-100 w-full flex  justify-center md:items-start gap-3 flex-col items-center  flex-wrap bg-[url(/images/bg.png)] bg-center ">
+            <h3 className={'text-eerie-black font-bold text-2xl md:text-3xl text-center w-full'}>Welcome, {user.name}</h3>
             <div
-                className="bg-yellow-100 border-2 border-black rounded-lg shadow-[2px_2px_0_0_#000] p-6 max-w-4xl  md:h-110 h-min   w-full ">
-                <h2 className="text-2xl font-extrabold text-black mb-6 text-center drop-shadow-[2px_2px_0_#fff] underline  underline-offset-4">
-                    Your Shortened Links
-                </h2>
+                className={'w-full flex md:flex-row justify-center md:items-start gap-3 flex-col items-center  flex-wrap '}>
+                <div className=" flex justify-center items-center mb-8 md:h-110 ">
+                    <CustomUrlForm/>
+                </div>
 
-                {isLoading && <Loading/>}
+                <div
+                    className="bg-yellow-100 border-2 border-black rounded-lg shadow-[2px_2px_0_0_#000] p-6 max-w-4xl  md:h-110 h-min   w-full ">
+                    <h2 className="text-2xl font-extrabold text-black mb-6 text-center drop-shadow-[2px_2px_0_#fff] underline  underline-offset-4">
+                        Your Shortened Links
+                    </h2>
 
-                {!isLoading && !isError && data?.urls?.length > 0 && (
-                    <div className="flex flex-wrap justify-center items-center gap-2 overflow-y-auto h-88 w-full">
-                        {data.urls.map((item, index) => (
-                            <UrlDetails item={item} index={index} key={item._id} deleteMutation={deleteMutation}/>
-                        ))}
-                    </div>
-                )}
+                    {isLoading && <Loading/>}
 
-                {!isLoading && !isError && (!data?.urls || data.urls.length === 0) && (
-                    <div className="text-center text-gray-700 font-semibold">No links to show</div>
-                )}
+                    {!isLoading && !isError && data?.urls?.length > 0 && (
+                        <div className="flex flex-wrap justify-center items-center gap-2 overflow-y-auto h-88 w-full">
+                            {data.urls.map((item, index) => (
+                                <UrlDetails item={item} index={index} key={item._id} deleteMutation={deleteMutation}/>
+                            ))}
+                        </div>
+                    )}
 
-                {isError && (
-                    <div className="text-center text-red-600 font-semibold mt-4">
-                        {error?.message || 'Failed to load links.'}
-                    </div>
-                )}
+                    {!isLoading && !isError && (!data?.urls || data.urls.length === 0) && (
+                        <div className="text-center text-gray-700 font-semibold">No links to show</div>
+                    )}
+
+                    {isError && (
+                        <div className="text-center text-red-600 font-semibold mt-4">
+                            {error?.message || 'Failed to load links.'}
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     )
