@@ -14,28 +14,32 @@ import AboutSection from "../sections/AboutSection.jsx";
 import ServicesSection from "../sections/ServicesSection.jsx";
 import Features from "../components/Features.jsx";
 import {IntegrationSection} from "../sections/IntegrationSection.jsx";
+import QrSection from "../sections/QrSection.jsx";
 
 const HomePage = () => {
     return (
         <div className={'h-full w-full'}>
 
             {/* Home Section */}
-            <HomeSection />
+            <HomeSection/>
 
             {/* About Section */}
-            <AboutSection />
+            <AboutSection/>
 
             {/* Service Section */}
-            <ServicesSection />
+            <ServicesSection/>
+
+            {/*QR Code Generator Section*/}
+            <QrSection/>
 
             {/* Features & Integration Section */}
             <section className={'flex items-center flex-col  border-b-4'}>
-                <Features />
-                <IntegrationSection />
+                <Features/>
+                <IntegrationSection/>
             </section>
 
             {/* Contact Section*/}
-            <ContactSection />
+            <ContactSection/>
 
         </div>
     )

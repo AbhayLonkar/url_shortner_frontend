@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from "@tanstack/react-router"
-import { login } from '../../store/slice/authSlice.js';
-import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import {useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {useNavigate} from "@tanstack/react-router"
+import {login} from '../../store/slice/authSlice.js';
+import {FaRegEye, FaRegEyeSlash} from "react-icons/fa";
 import ErrorBox from './ErrorBox.jsx';
 import Loading from './Loading.jsx';
-import { loginUser } from '../api/user.api.js';
+import {loginUser} from '../api/user.api.js';
 
-const LoginForm = ({ setLogin }) => {
+const LoginForm = ({setLogin}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
@@ -22,11 +22,10 @@ const LoginForm = ({ setLogin }) => {
             setLoading(true);
             setError('');
             const data = await loginUser(email, password);
-            console.log(data, 'from login form');
             dispatch(login(data.user))
             setEmail('');
             setPassword('');
-            navigate({ to: "/dashboard" });
+            navigate({to: "/dashboard"});
         } catch (err) {
             setError(err.response?.data?.message || 'Login failed. Please try again.');
             console.error(err);
@@ -73,10 +72,10 @@ const LoginForm = ({ setLogin }) => {
                         >
                             {showPassword ? (
                                 // Eye open SVG
-                                <FaRegEye size={22} />
+                                <FaRegEye size={22}/>
                             ) : (
                                 // Eye closed SVG
-                                <FaRegEyeSlash size={22} />
+                                <FaRegEyeSlash size={22}/>
                             )}
                         </button>
                     </div>
@@ -87,17 +86,17 @@ const LoginForm = ({ setLogin }) => {
                     className="bg-pink-400 cursor-pointer border-2 border-black text-eerie-black font-bold py-3 rounded-xl text-sm shadow-[3px_3px_0_0_#000] hover:bg-pink-300 active:translate-1 active:shadow transition flex items-center justify-center"
                     disabled={loading}
                 >
-                    {loading ? <Loading /> : 'LOGIN'}
+                    {loading ? <Loading/> : 'LOGIN'}
                 </button>
 
-                {error && <ErrorBox error={error} />}
+                {error && <ErrorBox error={error}/>}
             </form>
             <button
                 type="button"
                 onClick={handleGoogleLogin}
                 className="mt-2  bg-white cursor-pointer border-2 w-full text-eerie-black font-bold py-3 rounded-xl text-sm shadow-[3px_3px_0_0_#000] hover:bg-pink-100 active:translate-1 active:shadow transition flex gap-2 items-center justify-center"
             >
-                <img width={20} src="/images/google.png" alt="google logo" />
+                <img width={20} src="/images/google.png" alt="google logo"/>
                 LOGIN WITH GOOGLE
             </button>
             <div className="text-center mt-4">
