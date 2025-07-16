@@ -6,6 +6,7 @@ import {FaRegEye, FaRegEyeSlash} from "react-icons/fa";
 import ErrorBox from './ErrorBox.jsx';
 import Loading from './Loading.jsx';
 import {loginUser} from '../api/user.api.js';
+import {validatePassword} from "../utils/validation.js";
 
 const LoginForm = ({setLogin}) => {
     const [email, setEmail] = useState('');
@@ -21,13 +22,14 @@ const LoginForm = ({setLogin}) => {
         try {
             setLoading(true);
             setError('');
+            validatePassword(password);
             const data = await loginUser(email, password);
             dispatch(login(data.user))
             setEmail('');
             setPassword('');
             navigate({to: "/dashboard"});
         } catch (err) {
-            setError(err.response?.data?.message || 'Login failed. Please try again.');
+            setError(err.response?.data?.message || err?.message || 'Login failed. Please try again.');
             console.error(err);
         } finally {
             setLoading(false);
@@ -79,6 +81,7 @@ const LoginForm = ({setLogin}) => {
                             )}
                         </button>
                     </div>
+
                 </div>
 
                 <button
@@ -88,8 +91,8 @@ const LoginForm = ({setLogin}) => {
                 >
                     {loading ? <Loading/> : 'LOGIN'}
                 </button>
-
                 {error && <ErrorBox error={error}/>}
+                
             </form>
             <button
                 type="button"

@@ -1,11 +1,12 @@
 import {useNavigate} from '@tanstack/react-router';
 import React, {useState} from 'react';
-import {registerUser, sendOTP} from '../api/user.api';
+import {isUserExist, registerUser, sendOTP} from '../api/user.api';
 import {useDispatch} from 'react-redux';
 import {login} from '../../store/slice/authSlice';
 import {FaRegEye, FaRegEyeSlash} from "react-icons/fa";
 import Loading from "./Loading.jsx";
 import OTPVerification from './OTPVerification.jsx';
+import {validatePassword} from "../utils/validation.js";
 
 const RegisterForm = ({setLogin}) => {
     const [username, setUsername] = useState('');
@@ -24,10 +25,12 @@ const RegisterForm = ({setLogin}) => {
         setError('');
         setOtpLoading(true);
         try {
+            await isUserExist(email);
+            validatePassword(password);
             await sendOTP(email);
             setShowOTP(true);
         } catch (err) {
-            setError(err.response?.data?.message || 'Failed to send OTP.');
+            setError(err.response?.data?.message || err?.message || 'Failed to send OTP');
         } finally {
             setOtpLoading(false);
         }
@@ -41,7 +44,7 @@ const RegisterForm = ({setLogin}) => {
             dispatch(login(data.user));
             await navigate({to: '/dashboard'});
         } catch (err) {
-            setError(err.response?.data?.message || 'Registration failed. Please try again.');
+            setError(err.response?.data?.message || 'Registration failed. Please try again');
         } finally {
             setLoading(false);
             setShowOTP(false);
@@ -84,7 +87,7 @@ const RegisterForm = ({setLogin}) => {
                             <input
                                 id={'pass'}
                                 type={showPassword ? "text" : "password"}
-                                placeholder="Enter your password"
+                                placeholder="Enter your password (min: 6 characters)"
                                 className="px-4 py-3 rounded-xl border-2 border-black bg-white text-sm text-eerie-black shadow-[3px_3px_0_0_#000] focus:outline-none focus:ring-0 w-full pr-12"
                                 value={password}
                                 onChange={e => setPassword(e.target.value)}
@@ -93,7 +96,7 @@ const RegisterForm = ({setLogin}) => {
                             <button
                                 type="button"
                                 tabIndex={-1}
-                                className="absolute right-5 top-1/2 -translate-y-1/2 text-eerie-black hover:text-pink-500"
+                                className="absolute cursor-pointer right-5 top-1/2 -translate-y-1/2 text-eerie-black hover:text-pink-500"
                                 onClick={() => setShowPassword((prev) => !prev)}
                             >
                                 {showPassword ? (
