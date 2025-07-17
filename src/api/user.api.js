@@ -1,11 +1,11 @@
 import axiosInstance from "../utils/axiosInstance";
 
 export const loginUser = async (email, password) => {
-    const {data} = await axiosInstance.post('http://localhost:3000/api/auth/login', {email, password});
+    const {data} = await axiosInstance.post('/api/auth/login', {email, password});
     return data;
 }
 export const registerUser = async (name, email, password) => {
-    const {data} = await axiosInstance.post('http://localhost:3000/api/auth/register', {name, email, password});
+    const {data} = await axiosInstance.post('/api/auth/register', {name, email, password});
     return data;
 }
 export const logoutUser = async () => {
@@ -28,14 +28,13 @@ export const getCurrentUser = async () => {
     }
 };
 
-
 export const getUrls = async () => {
-    const {data} = await axiosInstance.get('http://localhost:3000/api/user/urls');
+    const {data} = await axiosInstance.get('/api/user/urls');
     return data;
 }
 
 export const deleteUrl = async (id) => {
-    const {data} = await axiosInstance.delete(`http://localhost:3000/api/user/delete/${id}`);
+    const {data} = await axiosInstance.delete(`/api/user/delete/${id}`);
     return data;
 }
 
@@ -48,11 +47,6 @@ export const verifyOTP = async (email, otp) => {
     const response = await axiosInstance.post('/api/otp/verify', {email, otp});
     return response.data;
 };
-
-export const googleLogin = async () => {
-    const response = await axiosInstance.get('/api/auth/google');
-    return response.data;
-}
 
 export const isUserExist = async (email) => {
     const {data} = await axiosInstance.get(`/api/user/find/${email}`);
