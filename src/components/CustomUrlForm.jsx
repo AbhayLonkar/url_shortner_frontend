@@ -76,7 +76,7 @@ const CustomUrlForm = () => {
                 />
                 <button
                     type="submit"
-                    className="bg-pink-400 border-2 py-3  text-eerie-black font-bold  rounded-lg shadow-[2px_2px_0_0_#000] hover:bg-pink-300 active:shadow active:translate-1 transition flex items-center justify-center text-sm"
+                    className="bg-pink-400 border-2 py-3  text-eerie-black font-bold  rounded-lg shadow-[2px_2px_0_0_#000] hover:bg-pink-300 active:shadow active:translate-1 cursor-pointer transition flex items-center justify-center text-sm"
                     disabled={loading}
                 >
                     {loading ? <Loading/> : 'Shorten URL'}
