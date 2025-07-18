@@ -22,9 +22,10 @@ const UrlCard = ({item, index, deleteMutation}) => {
                 <div className="flex justify-between items-center mb-2">
                     <h2 className="font-bold text-lg">#{index + 1}</h2>
                     <span
-                        className="text-sm text-eerie-black font-semibold bg-blue-400 border shadow-[2px_2px_0_#000] rounded-lg p-1">Clicks: {item.clicks ?? 0}</span>
+                        className="text-sm text-eerie-black font-semibold bg-blue-400 border shadow-[2px_2px_0_#000] rounded-lg p-1">
+                        Clicks: {item.clicks ?? 0}
+                    </span>
                 </div>
-
                 <div className="mb-2">
                     <p className="text-sm font-semibold text-gray-600">Short URL</p>
                     <p className="text-blue-700 break-all">{item.createdUrl}</p>
