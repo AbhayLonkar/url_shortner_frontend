@@ -2,7 +2,7 @@ import axios from "axios";
 
 const axiosInstance = axios.create({
     baseURL: import.meta.env.VITE_BACKEND_URL,
-    timeout: 10000, // 10sec
+    // timeout: 10000, // 10sec
     withCredentials: true, // Allow cookies to be sent with requests
 });
 
