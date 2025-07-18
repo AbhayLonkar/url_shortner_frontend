@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {MdContentCopy} from "react-icons/md";
 import Loading from "./Loading.jsx";
+import toast, {Toaster} from "react-hot-toast";
 
 const UrlCard = ({item, index, deleteMutation}) => {
 
@@ -34,9 +35,18 @@ const UrlCard = ({item, index, deleteMutation}) => {
                 <div className="mb-4">
                     <p className="text-sm font-semibold text-gray-600 flex gap-2 items-center">Original URL
                         <span
-                            onClick={() => navigator.clipboard.writeText(item.originalUrl)}
+                            onClick={() => {
+                                navigator.clipboard.writeText(item.originalUrl)
+                                    .then(() =>
+                                        toast.success('Copied to clipboard')
+                                    )
+                            }}
                             className={'cursor-pointer hover:bg-gray-200 p-0.5 rounded-full px-1'}
                             title="Copy URL">
+                            <Toaster
+                                position="top-center"
+                                reverseOrder={false}
+                            />
                          <MdContentCopy size={12}/>
                     </span>
                     </p>

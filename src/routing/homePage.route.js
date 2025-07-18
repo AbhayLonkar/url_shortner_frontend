@@ -1,11 +1,10 @@
-import { createRoute } from "@tanstack/react-router"
-import { rootRoute } from "./routeTree"
-import UrlForm from "../components/UrlForm"
+import {createRoute} from "@tanstack/react-router"
+import {rootRoute} from "./routeTree"
 import HomePage from "../pages/HomePage.jsx";
 
 
 export const homePageRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: '/',
-  component: HomePage
+    getParentRoute: () => rootRoute,
+    path: '/',
+    component: HomePage
 })

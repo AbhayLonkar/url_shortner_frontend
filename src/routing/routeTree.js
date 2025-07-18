@@ -1,12 +1,13 @@
 import {createRootRoute,} from '@tanstack/react-router'
 import App from "../App"
-import {homePageRoute} from './homepage.route'
-import {authRoute} from './auth.route.'
-import {dashboardRoute} from './dashboard.route'
-import {notFoundRoute} from "./notFound.route.js";
+import {homePageRoute} from './homePage.route.js'
+import {authRoute} from './auth.route.js'
+import {dashboardRoute} from './dashboard.route.js'
+import NotFoundPage from "../pages/NotFoundPage.jsx";
 
 export const rootRoute = createRootRoute({
     component: App,
+    notFoundComponent: NotFoundPage
 })
 
-export const routeTree = rootRoute.addChildren([homePageRoute, authRoute, dashboardRoute, notFoundRoute])
+export const routeTree = rootRoute.addChildren([homePageRoute, authRoute, dashboardRoute])
