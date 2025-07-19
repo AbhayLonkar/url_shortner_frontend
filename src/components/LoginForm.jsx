@@ -5,7 +5,7 @@ import {login} from '../../store/slice/authSlice.js';
 import {FaRegEye, FaRegEyeSlash} from "react-icons/fa";
 import ErrorBox from './ErrorBox.jsx';
 import Loading from './Loading.jsx';
-import {loginUser} from '../api/user.api.js';
+import {loginUser, loginWithGoogle} from '../api/user.api.js';
 import {validatePassword} from "../utils/validation.js";
 
 const LoginForm = ({setLogin}) => {
@@ -36,9 +36,6 @@ const LoginForm = ({setLogin}) => {
         }
     };
 
-    const handleGoogleLogin = () => {
-        window.location.href = 'http://localhost:3000/api/auth/google';
-    }
 
     return (
         <div className="bg-saffron border-2  rounded-lg shadow-[4px_4px_0_0_#000] p-8 md:w-full  max-w-md">
@@ -100,7 +97,7 @@ const LoginForm = ({setLogin}) => {
             </div>
             <button
                 type="button"
-                onClick={handleGoogleLogin}
+                onClick={loginWithGoogle}
                 className="bg-white cursor-pointer border-2 w-full text-eerie-black font-bold py-3 rounded-lg text-sm shadow-[3px_3px_0_0_#000] hover:bg-pink-100 active:translate-1 active:shadow transition flex gap-2 items-center justify-center"
             >
                 <img width={20} src="/images/google.png" alt="google logo"/>

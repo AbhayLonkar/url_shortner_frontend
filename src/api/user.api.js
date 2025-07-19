@@ -8,6 +8,11 @@ export const registerUser = async (name, email, password) => {
     const {data} = await axiosInstance.post('/api/auth/register', {name, email, password});
     return data;
 }
+
+export const loginWithGoogle = () => {
+    window.location.href = import.meta.env.VITE_BACKEND_URL + '/api/auth/google';
+}
+
 export const logoutUser = async () => {
     const {data} = await axiosInstance.get('/api/auth/logout');
     return data;
